@@ -12,11 +12,11 @@ const tagClasses = {
   amber: "text-amber-700",
 };
 
-export default function TrackRow({ track }: { track: Track }) {
+export default function TrackRow({ track, cols }: { track: Track; cols: number }) {
   return (
     <div
       className="grid items-center gap-y-1.5 py-3"
-      style={{ gridTemplateColumns: "220px repeat(12, minmax(0, 1fr))" }}
+      style={{ gridTemplateColumns: `220px repeat(${cols}, minmax(0, 1fr))` }}
     >
       <div className="pr-4">
         <h3 className="text-sm font-bold text-slate-900">

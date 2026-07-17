@@ -1,7 +1,11 @@
-import { legend } from "./data";
 import { variantClasses } from "./types";
 
-export default function Legend() {
+interface LegendItem {
+  variant: "prep" | "build" | "milestone";
+  label: string;
+}
+
+export default function Legend({ legend }: { legend: LegendItem[] }) {
   return (
     <div className="mt-4 flex flex-wrap items-center gap-5 border-t border-slate-100 pt-4">
       {legend.map((item) => (

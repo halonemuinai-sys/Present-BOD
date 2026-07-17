@@ -1,6 +1,11 @@
 import type { Slide } from "@/lib/types";
 import EnterpriseEcosystemSlide from "@/components/slides/enterprise-ecosystem";
 import CoverHeroSlide from "@/components/slides/cover-hero";
+import GrowthStrategySlide from "@/components/slides/growth-strategy";
+import KpiFrameworkSlide from "@/components/slides/kpi-framework";
+import CurrentChallengesSlide from "@/components/slides/current-challenges";
+import SolutionDashboardSlide from "@/components/slides/solution-dashboard";
+import EnablerRequiredSlide from "@/components/slides/enabler-required";
 import BigDataPipelineSlide from "@/components/slides/big-data-pipeline";
 import DepartmentPainPointsSlide from "@/components/slides/department-pain-points";
 import RoadmapTimelineSlide from "@/components/slides/roadmap-timeline";
@@ -19,8 +24,28 @@ export const slides: Slide[] = [
   },
   {
     type: "diagram",
-    id: "enterprise-ecosystem",
-    Component: EnterpriseEcosystemSlide,
+    id: "growth-strategy",
+    Component: GrowthStrategySlide,
+  },
+  {
+    type: "diagram",
+    id: "kpi-framework",
+    Component: KpiFrameworkSlide,
+  },
+  {
+    type: "diagram",
+    id: "current-challenges",
+    Component: CurrentChallengesSlide,
+  },
+  {
+    type: "diagram",
+    id: "solution-dashboard",
+    Component: SolutionDashboardSlide,
+  },
+  {
+    type: "diagram",
+    id: "enabler-required",
+    Component: EnablerRequiredSlide,
   },
   {
     type: "diagram",
@@ -46,5 +71,10 @@ export const slides: Slide[] = [
     type: "diagram",
     id: "pricing-tabs",
     Component: PricingTabsSlide,
+  },
+  {
+    type: "diagram",
+    id: "enterprise-ecosystem",
+    Component: EnterpriseEcosystemSlide,
   },
 ];

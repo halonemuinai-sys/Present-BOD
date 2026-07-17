@@ -156,4 +156,29 @@ body {
   font-weight: 500;
   color: var(--text-muted);
   letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.slide-progress-track {
+  position: relative;
+  width: 160px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--border);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .slide-progress-track {
+    width: 220px;
+  }
+}
+
+.slide-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--accent-emerald);
 }

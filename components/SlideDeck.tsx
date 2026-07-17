@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronUp, Maximize, Minimize } from "lucide-react";
 import SlideRenderer from "@/components/SlideRenderer";
 import { slides } from "@/content/slides";
 
@@ -12,9 +12,17 @@ const variants = {
   exit: (direction: number) => ({ x: -direction * 60, opacity: 0 }),
 };
 
+function formatSlideLabel(id: string) {
+  return id
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export default function SlideDeck() {
   const [[currentIndex, direction], setCurrent] = useState<[number, number]>([0, 0]);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const goTo = useCallback(
     (index: number) => {
@@ -26,6 +34,15 @@ export default function SlideDeck() {
 
   const next = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex]);
   const prev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex]);
+
+  const handleTrackClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      goTo(Math.round(ratio * (slides.length - 1)));
+    },
+    [goTo]
+  );
 
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
@@ -70,13 +87,14 @@ export default function SlideDeck() {
           toggleFullscreen();
           break;
         case "Escape":
-          if (document.fullscreenElement) document.exitFullscreen();
+          if (pickerOpen) setPickerOpen(false);
+          else if (document.fullscreenElement) document.exitFullscreen();
           break;
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [next, prev, goTo, toggleFullscreen]);
+  }, [next, prev, goTo, toggleFullscreen, pickerOpen]);
 
   const slide = slides[currentIndex];
 
@@ -117,16 +135,82 @@ export default function SlideDeck() {
         >
           <ChevronLeft size={20} />
         </button>
-        <div className="flex items-center gap-2">
-          {slides.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => goTo(i)}
-              className={`slide-dot ${i === currentIndex ? "active" : ""}`}
-              aria-label={`Go to slide ${i + 1}`}
+
+        <div className="flex items-center gap-3">
+          <div
+            className="slide-progress-track"
+            onClick={handleTrackClick}
+            role="slider"
+            tabIndex={0}
+            aria-label="Slide progress"
+            aria-valuemin={1}
+            aria-valuemax={slides.length}
+            aria-valuenow={currentIndex + 1}
+          >
+            <motion.div
+              className="slide-progress-fill"
+              animate={{ width: `${((currentIndex + 1) / slides.length) * 100}%` }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
-          ))}
+          </div>
+          <div className="relative">
+            <button
+              onClick={() => setPickerOpen((v) => !v)}
+              className="slide-counter flex items-center gap-1 rounded-full px-2 py-1 transition-colors hover:bg-[var(--surface)]"
+              aria-label="Jump to slide"
+              aria-expanded={pickerOpen}
+            >
+              {currentIndex + 1} / {slides.length}
+              <ChevronUp
+                size={12}
+                className={`transition-transform ${pickerOpen ? "" : "rotate-180"}`}
+              />
+            </button>
+
+            <AnimatePresence>
+              {pickerOpen && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setPickerOpen(false)} />
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute bottom-full left-1/2 z-50 mb-3 max-h-72 w-64 -translate-x-1/2 overflow-y-auto rounded-xl border p-1.5"
+                    style={{
+                      background: "var(--surface)",
+                      borderColor: "var(--border)",
+                      boxShadow: "var(--shadow-lg)",
+                    }}
+                  >
+                    {slides.map((s, i) => (
+                      <button
+                        key={s.id}
+                        onClick={() => {
+                          goTo(i);
+                          setPickerOpen(false);
+                        }}
+                        className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm transition-colors ${
+                          i === currentIndex ? "bg-[var(--accent-emerald)] text-white" : "hover:bg-black/5"
+                        }`}
+                      >
+                        <span
+                          className={`text-xs tabular-nums ${
+                            i === currentIndex ? "text-white/80" : "text-[var(--text-muted)]"
+                          }`}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="truncate">{formatSlideLabel(s.id)}</span>
+                      </button>
+                    ))}
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
+
         <button
           onClick={next}
           disabled={currentIndex === slides.length - 1}
@@ -136,10 +220,6 @@ export default function SlideDeck() {
           <ChevronRight size={20} />
         </button>
       </div>
-
-      <span className="slide-counter absolute bottom-8 right-6 z-50">
-        {currentIndex + 1} / {slides.length}
-      </span>
     </div>
   );
 }

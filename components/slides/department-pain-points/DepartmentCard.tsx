@@ -41,7 +41,7 @@ export default function DepartmentCard({ dept, onOpenModal }: { dept: Department
       </div>
 
       <div>
-        <span className={`text-xs font-bold uppercase tracking-wide ${c.text}`}>Masalah Utama</span>
+        <span className={`text-xs font-bold uppercase tracking-wide ${c.text}`}>Core Issues</span>
         <ul className="mt-1.5 flex flex-col gap-1.5">
           {dept.painPoints.map((point) => (
             <li key={point} className="flex items-start gap-1.5 text-xs leading-snug text-slate-600">
@@ -53,7 +53,7 @@ export default function DepartmentCard({ dept, onOpenModal }: { dept: Department
       </div>
 
       <div className="mt-auto border-t border-slate-100 pt-3">
-        <span className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Contoh</span>
+        <span className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Mediums</span>
         <div className="mt-1.5 flex flex-wrap gap-1.5">
           {dept.examples.map((ex) => (
             <span
@@ -77,7 +77,7 @@ export default function DepartmentCard({ dept, onOpenModal }: { dept: Department
         {clickable && (
           <span className={`ml-1 flex items-center gap-1 text-[10px] font-semibold ${c.text} opacity-70`}>
             <MousePointerClick size={11} />
-            Lihat Detail
+            View Details
           </span>
         )}
       </div>

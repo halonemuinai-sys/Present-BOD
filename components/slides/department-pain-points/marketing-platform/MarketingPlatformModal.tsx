@@ -147,7 +147,7 @@ export default function MarketingPlatformModal({ onClose }: { onClose: () => voi
         >
           <motion.div variants={panel} className="rounded-xl border border-slate-200 p-4">
             <p className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-900">
-              Alur Status Kampanye
+              Campaign Status Workflow
             </p>
             <div className="flex items-start gap-1">
               {statusFlow.map((s, i) => {
@@ -171,14 +171,14 @@ export default function MarketingPlatformModal({ onClose }: { onClose: () => voi
 
           <motion.div variants={panel} className="rounded-xl border border-slate-200 p-4">
             <p className="mb-3 text-xs font-extrabold uppercase tracking-wide text-slate-900">
-              Matriks Persetujuan (Contoh)
+              Approval Matrix (Example)
             </p>
             <div className="overflow-hidden rounded-lg border border-slate-200">
               <table className="w-full text-[10px]">
                 <thead className="bg-slate-50 text-slate-500">
                   <tr>
-                    <th className="px-2 py-1.5 text-left font-semibold">LOB / Divisi</th>
-                    <th className="px-2 py-1.5 text-left font-semibold">Nominal Budget</th>
+                    <th className="px-2 py-1.5 text-left font-semibold">LOB / Division</th>
+                    <th className="px-2 py-1.5 text-left font-semibold">Budget Amount</th>
                     <th className="px-2 py-1.5 text-left font-semibold">Approver 1</th>
                     <th className="px-2 py-1.5 text-left font-semibold">Approver 2</th>
                   </tr>

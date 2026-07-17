@@ -31,11 +31,11 @@ export default function DepartmentPainPointsSlide() {
             </span>
           </div>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
-            Empat Departemen, Empat Silo
+            Four Departments, Four Silos
           </h1>
           <p className="mt-2 max-w-3xl text-sm text-slate-500 md:text-base">
-            Operasional berjalan terpisah dengan ketergantungan tinggi pada Excel lokal dan berkas fisik
-            — menimbulkan keterlambatan, risiko hukum, dan biaya yang tidak terkendali.
+            Operations run in isolation with high reliance on local Excel sheets and paper archives
+            — causing delays, compliance risks, and uncontrolled spending.
           </p>
         </motion.div>
 

@@ -1,8 +1,6 @@
-import { months } from "./data";
-
-export default function MonthHeader() {
+export default function MonthHeader({ months, cols }: { months: string[]; cols: number }) {
   return (
-    <div className="grid" style={{ gridTemplateColumns: "220px repeat(12, minmax(0, 1fr))" }}>
+    <div className="grid" style={{ gridTemplateColumns: `220px repeat(${cols}, minmax(0, 1fr))` }}>
       <div />
       {months.map((month) => (
         <span
