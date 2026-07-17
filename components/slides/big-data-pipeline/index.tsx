@@ -33,12 +33,8 @@ export default function BigDataPipelineSlide() {
           transition={{ duration: 0.5 }}
           className="mb-6 font-kalam"
         >
-          <h1 className="text-3xl font-bold text-green-900 md:text-4xl">
-            <span className="underline decoration-2 underline-offset-4">Big Data</span>
-            <span className="font-normal text-green-800">
-              {" "}
-              : Automation &bull; Digitalization &bull; Agility
-            </span>
+          <h1 className="text-3xl font-bold text-green-900 md:text-4xl text-center">
+            <span className="underline decoration-2 underline-offset-4">Big Data Pipeline &amp; Analytics Architecture</span>
           </h1>
 
           <div className="mt-5 flex flex-col gap-3 text-lg text-green-900">
