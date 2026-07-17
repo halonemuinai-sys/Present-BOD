@@ -11,7 +11,7 @@ export interface TimelineData {
 
 export const inHouseData: TimelineData = {
   eyebrow: "Implementation Roadmap",
-  title: "In-house Dev Team · 6-Month Plan",
+  title: "In-house Developer · 6-Month Plan",
   subtitle: "GA, Legal & Compliance running since May; Marketing Budget module initiated in late June — full go-live in October.",
   months: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
   tracks: [

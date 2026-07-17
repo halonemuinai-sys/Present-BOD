@@ -38,7 +38,7 @@ export default function RoadmapTimelineSlide() {
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              In-house Dev Team
+              In-house Developer
             </button>
             <button
               onClick={() => setTab("agency")}
