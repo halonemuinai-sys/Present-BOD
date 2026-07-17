@@ -179,7 +179,7 @@ export default function BuildVsBuySlide() {
             {tab === "roi" && (
               <div className="flex flex-col gap-6">
                 <p className="max-w-3xl text-sm text-slate-500 leading-relaxed">
-                  Kalkulasi pengembalian investasi (ROI) dan perbandingan penghematan biaya bulanan serta rincian biaya operasional tahunan untuk server, pemeliharaan, dan AI engine.
+                  Calculation of return on investment (ROI), monthly savings comparison, and annualized operational cost breakdown for servers, maintenance, and the AI engine.
                 </p>
 
                 {/* ROI Headline Card */}

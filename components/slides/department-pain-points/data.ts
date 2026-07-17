@@ -42,6 +42,7 @@ export const departments: Department[] = [
       { icon: FileText, label: "Manual Logs" },
     ],
     remark: "Development Adjustment",
+    modalId: "general-affairs",
   },
   {
     number: "02",

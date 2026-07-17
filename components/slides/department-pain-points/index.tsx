@@ -7,6 +7,8 @@ import HighlightCard from "./HighlightCard";
 import DepartmentCard from "./DepartmentCard";
 import InsightBar from "./InsightBar";
 import MarketingPlatformModal from "./marketing-platform/MarketingPlatformModal";
+import GeneralAffairsModal from "./general-affairs/GeneralAffairsModal";
+import type { Department } from "./types";
 
 const container: Variants = {
   hidden: {},
@@ -14,7 +16,7 @@ const container: Variants = {
 };
 
 export default function DepartmentPainPointsSlide() {
-  const [marketingOpen, setMarketingOpen] = useState(false);
+  const [openModal, setOpenModal] = useState<Department["modalId"] | null>(null);
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
@@ -60,7 +62,7 @@ export default function DepartmentPainPointsSlide() {
             <DepartmentCard
               key={dept.deptLabel}
               dept={dept}
-              onOpenModal={dept.modalId === "marketing-platform" ? () => setMarketingOpen(true) : undefined}
+              onOpenModal={dept.modalId ? () => setOpenModal(dept.modalId) : undefined}
             />
           ))}
         </motion.div>
@@ -69,7 +71,12 @@ export default function DepartmentPainPointsSlide() {
       </div>
 
       <AnimatePresence>
-        {marketingOpen && <MarketingPlatformModal onClose={() => setMarketingOpen(false)} />}
+        {openModal === "marketing-platform" && (
+          <MarketingPlatformModal onClose={() => setOpenModal(null)} />
+        )}
+        {openModal === "general-affairs" && (
+          <GeneralAffairsModal onClose={() => setOpenModal(null)} />
+        )}
       </AnimatePresence>
     </div>
   );
