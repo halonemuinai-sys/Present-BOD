@@ -22,7 +22,7 @@ export default function PricingTabsSlide() {
 
   return (
     <div className="h-full w-full overflow-hidden bg-white">
-      <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-6 py-8 md:px-10">
+      <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-6 pb-16 pt-8 md:px-10 md:pb-20">
         <div className="shrink-0">
           <motion.div
             initial={{ opacity: 0, y: -12 }}
