@@ -60,10 +60,10 @@ export const consumerItems: SmallItem[] = [
 ];
 
 export const impactChain: ImpactStep[] = [
-  { icon: Lightbulb, label: "Actionable Insight" },
-  { icon: Target, label: "Better Decision" },
-  { icon: DollarSign, label: "Cost Impact" },
-  { icon: TrendingUp, label: "Business Growth" },
+  { icon: Lightbulb, label: "Actionable Insight", modalId: "actionable-insight" },
+  { icon: Target, label: "Better Decision", modalId: "better-decision" },
+  { icon: DollarSign, label: "Cost Impact", modalId: "cost-impact" },
+  { icon: TrendingUp, label: "Business Growth", modalId: "business-growth" },
 ];
 
 export const warehouseIcon = ShieldCheck;

@@ -1,10 +1,12 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { departments, highlightCards } from "./data";
 import HighlightCard from "./HighlightCard";
 import DepartmentCard from "./DepartmentCard";
 import InsightBar from "./InsightBar";
+import MarketingPlatformModal from "./marketing-platform/MarketingPlatformModal";
 
 const container: Variants = {
   hidden: {},
@@ -12,6 +14,8 @@ const container: Variants = {
 };
 
 export default function DepartmentPainPointsSlide() {
+  const [marketingOpen, setMarketingOpen] = useState(false);
+
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
       <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center gap-5 px-6 py-8 md:px-10">
@@ -53,12 +57,20 @@ export default function DepartmentPainPointsSlide() {
           className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
         >
           {departments.map((dept) => (
-            <DepartmentCard key={dept.deptLabel} dept={dept} />
+            <DepartmentCard
+              key={dept.deptLabel}
+              dept={dept}
+              onOpenModal={dept.modalId === "marketing-platform" ? () => setMarketingOpen(true) : undefined}
+            />
           ))}
         </motion.div>
 
         <InsightBar />
       </div>
+
+      <AnimatePresence>
+        {marketingOpen && <MarketingPlatformModal onClose={() => setMarketingOpen(false)} />}
+      </AnimatePresence>
     </div>
   );
 }

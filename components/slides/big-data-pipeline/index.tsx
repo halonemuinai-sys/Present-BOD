@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Eye } from "lucide-react";
 import { analyticsItems, consumerItems, dataSourceItems, middlewareItems } from "./data";
 import StageLabel from "./StageLabel";
@@ -9,6 +10,11 @@ import DownArrow from "./DownArrow";
 import WarehouseBox from "./WarehouseBox";
 import ImpactChain from "./ImpactChain";
 import Legend from "./Legend";
+import CostImpactModal from "./cost-impact/CostImpactModal";
+import BusinessGrowthModal from "./business-growth/BusinessGrowthModal";
+import ActionableInsightModal from "./actionable-insight/ActionableInsightModal";
+import BetterDecisionModal from "./better-decision/BetterDecisionModal";
+import type { ImpactModalId } from "./types";
 
 const container: Variants = {
   hidden: {},
@@ -16,6 +22,8 @@ const container: Variants = {
 };
 
 export default function BigDataPipelineSlide() {
+  const [openModal, setOpenModal] = useState<ImpactModalId | null>(null);
+
   return (
     <div className="h-full w-full overflow-y-auto bg-[#faf9f4]">
       <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col justify-center px-6 py-10 md:px-10">
@@ -161,13 +169,22 @@ export default function BigDataPipelineSlide() {
           <div className="flex flex-col gap-3 md:flex-row">
             <StageLabel number="5" title="Business Impact" subtitle="Outcome" />
             <div className="flex-1">
-              <ImpactChain />
+              <ImpactChain onItemClick={setOpenModal} />
             </div>
           </div>
         </div>
 
         <Legend />
       </div>
+
+      <AnimatePresence>
+        {openModal === "cost-impact" && <CostImpactModal onClose={() => setOpenModal(null)} />}
+        {openModal === "business-growth" && <BusinessGrowthModal onClose={() => setOpenModal(null)} />}
+        {openModal === "actionable-insight" && (
+          <ActionableInsightModal onClose={() => setOpenModal(null)} />
+        )}
+        {openModal === "better-decision" && <BetterDecisionModal onClose={() => setOpenModal(null)} />}
+      </AnimatePresence>
     </div>
   );
 }

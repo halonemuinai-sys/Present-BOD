@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { XCircle } from "lucide-react";
+import { MousePointerClick, XCircle } from "lucide-react";
 import type { Department } from "./types";
 import { colorClasses } from "./types";
 
@@ -8,14 +8,25 @@ const cardVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 240, damping: 22 } },
 };
 
-export default function DepartmentCard({ dept }: { dept: Department }) {
+export default function DepartmentCard({ dept, onOpenModal }: { dept: Department; onOpenModal?: () => void }) {
   const c = colorClasses[dept.color];
+  const clickable = Boolean(dept.modalId && onOpenModal);
 
   return (
     <motion.div
       variants={cardVariants}
       whileHover={{ y: -3 }}
-      className={`relative flex flex-1 flex-col gap-3 overflow-hidden rounded-2xl border-2 border-b-4 bg-white p-4 shadow-sm transition-shadow hover:shadow-md ${c.border} ${c.borderBottom}`}
+      onClick={clickable ? onOpenModal : undefined}
+      role={clickable ? "button" : undefined}
+      tabIndex={clickable ? 0 : undefined}
+      onKeyDown={
+        clickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") onOpenModal?.();
+            }
+          : undefined
+      }
+      className={`relative flex flex-1 flex-col gap-3 overflow-hidden rounded-2xl border-2 border-b-4 bg-white p-4 shadow-sm transition-shadow hover:shadow-md ${clickable ? "cursor-pointer" : ""} ${c.border} ${c.borderBottom}`}
     >
       <div className="flex items-start justify-between">
         <div className={`flex h-11 w-11 items-center justify-center rounded-xl text-white ${c.solid}`}>
@@ -63,6 +74,12 @@ export default function DepartmentCard({ dept }: { dept: Department }) {
           className={`h-1.5 w-1.5 rounded-full ${c.solid}`}
         />
         <span className={`text-xs font-bold ${c.text}`}>{dept.remark}</span>
+        {clickable && (
+          <span className={`ml-1 flex items-center gap-1 text-[10px] font-semibold ${c.text} opacity-70`}>
+            <MousePointerClick size={11} />
+            Lihat Detail
+          </span>
+        )}
       </div>
     </motion.div>
   );

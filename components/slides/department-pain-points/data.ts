@@ -94,6 +94,7 @@ export const departments: Department[] = [
       { icon: FileText, label: "DocHub" },
     ],
     remark: "Progress Research",
+    modalId: "marketing-platform",
   },
 ];
 

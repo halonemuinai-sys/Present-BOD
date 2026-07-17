@@ -4,4 +4,6 @@ export type ItemCardData = { icon: LucideIcon; title: string; subtitle: string }
 
 export type SmallItem = { icon: LucideIcon; label: string };
 
-export type ImpactStep = { icon: LucideIcon; label: string };
+export type ImpactModalId = "cost-impact" | "business-growth" | "actionable-insight" | "better-decision";
+
+export type ImpactStep = { icon: LucideIcon; label: string; modalId?: ImpactModalId };
