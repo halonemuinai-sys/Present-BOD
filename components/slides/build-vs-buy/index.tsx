@@ -1,17 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { footnote, headerLabel, headerTitlePart1, headerTitlePart2, headerTitlePart3 } from "./data";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  footnote,
+  headerLabel,
+  headerTitlePart1,
+  headerTitlePart2,
+  headerTitlePart3,
+  devMeta,
+  devTabs,
+  composition,
+  grandFixedTotal,
+  grandRecurringTotal,
+  foundationSections,
+  dataSections,
+  dataGrandTotal,
+  dashboardSections,
+  dashboardGrandTotal,
+  qaSections,
+  recurringItems,
+  recurringNotes,
+  roiAnalysis,
+} from "./data";
 import SaasPanel from "./SaasPanel";
 import PlatformPanel from "./PlatformPanel";
 import VsBadge from "./VsBadge";
 import SummaryStats from "./SummaryStats";
+import type { DevTabId } from "./data";
+import type { PricingSection, GrandTotal } from "./types";
 
 export default function BuildVsBuySlide() {
+  const [tab, setTab] = useState<"market" | "development" | "roi">("market");
+  const [devTab, setDevTab] = useState<DevTabId>("overview");
+
   return (
-    <div className="relative h-full w-full overflow-y-auto bg-white">
+    <div className="relative h-full w-full overflow-y-auto bg-slate-50/20">
       <div
-        className="pointer-events-none absolute right-8 top-8 h-24 w-24 opacity-40"
+        className="pointer-events-none absolute right-8 top-8 h-24 w-24 opacity-20"
         style={{
           backgroundImage: "radial-gradient(circle, #cbd5e1 1.5px, transparent 1.5px)",
           backgroundSize: "12px 12px",
@@ -19,40 +45,337 @@ export default function BuildVsBuySlide() {
       />
 
       <div className="relative mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center px-6 py-8 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
-            {headerLabel}
-          </span>
-          <span className="mt-1 block h-1 w-10 rounded-full bg-green-500" />
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
-            <span className="text-slate-900">{headerTitlePart1}</span>{" "}
-            <span className="font-semibold text-slate-400">{headerTitlePart2}</span>{" "}
-            <span className="text-green-600">{headerTitlePart3}</span>
-          </h1>
-        </motion.div>
-
-        <div className="relative mt-6 flex flex-col gap-4 md:flex-row md:items-stretch md:gap-14">
-          <SaasPanel />
-          <VsBadge />
-          <PlatformPanel />
+        
+        {/* Header and Tab switcher aligned horizontally */}
+        <div className="mb-5 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#2c4a4e]">
+              {headerLabel}
+            </span>
+            <span className="mt-1 block h-1 w-10 rounded-full bg-green-500" />
+            <h1 className="mt-2 text-2xl font-extrabold tracking-tight md:text-3xl">
+              {tab === "market" && (
+                <>
+                  <span className="text-slate-900">{headerTitlePart1}</span>{" "}
+                  <span className="font-semibold text-slate-400">{headerTitlePart2}</span>{" "}
+                  <span className="text-green-600">{headerTitlePart3}</span>
+                </>
+              )}
+              {tab === "development" && (
+                <span className="text-slate-900">Project Development Scope &amp; Budget</span>
+              )}
+              {tab === "roi" && (
+                <span className="text-slate-900">Return on Investment (ROI) &amp; Operational Costs</span>
+              )}
+            </h1>
+          </div>
+          
+          <div className="inline-flex rounded-full bg-slate-200/50 p-1 backdrop-blur-sm shrink-0">
+            <button
+              onClick={() => setTab("market")}
+              className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
+                tab === "market"
+                  ? "bg-[#2c4a4e] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Market Comparison
+            </button>
+            <button
+              onClick={() => setTab("development")}
+              className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
+                tab === "development"
+                  ? "bg-[#2c4a4e] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Dev Budget &amp; Scope
+            </button>
+            <button
+              onClick={() => setTab("roi")}
+              className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
+                tab === "roi"
+                  ? "bg-[#2c4a4e] text-white shadow-md"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              ROI &amp; Recurring
+            </button>
+          </div>
         </div>
 
-        <SummaryStats />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            {/* Tab 1: Market Comparison (SaaS vs One Platform) */}
+            {tab === "market" && (
+              <div>
+                <p className="mb-6 max-w-3xl text-sm text-slate-500 leading-relaxed">
+                  Comparing the direct subscription costs of purchasing 10 separate specialized SaaS products versus building a consolidated platform (MRA Hub).
+                </p>
+                <div className="relative flex flex-col gap-4 md:flex-row md:items-stretch md:gap-10">
+                  <SaasPanel />
+                  <VsBadge />
+                  <PlatformPanel />
+                </div>
+                <SummaryStats />
+                <p className="mt-4 text-center text-xs italic text-slate-400">{footnote}</p>
+              </div>
+            )}
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-          className="mt-4 text-center text-xs italic text-slate-400"
-        >
-          {footnote}
-        </motion.p>
+            {/* Tab 2: Development Budget & Scope */}
+            {tab === "development" && (
+              <div>
+                <p className="mb-6 max-w-3xl text-sm text-slate-500 leading-relaxed">
+                  Scope of work and cost breakdown for setting up the unified core platform infrastructure, data pipelines (Talenta + NetSuite Connectors), and 7 executive dashboards.
+                </p>
+
+                {/* Sub-tabs Navigation */}
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {devTabs.map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => setDevTab(t.id)}
+                      className={`cursor-pointer flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-bold border transition-all duration-200 ${
+                        devTab === t.id
+                          ? "bg-[#1f3a3d] text-white border-[#1f3a3d] shadow-sm"
+                          : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                      }`}
+                    >
+                      <t.icon size={13} />
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={devTab}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {devTab === "overview" && <OverviewSubTab />}
+                    {devTab === "foundation" && <PricingTable sections={foundationSections} />}
+                    {devTab === "data" && <PricingTable sections={dataSections} grandTotal={dataGrandTotal} />}
+                    {devTab === "dashboards" && (
+                      <PricingTable sections={dashboardSections} grandTotal={dashboardGrandTotal} />
+                    )}
+                    {devTab === "qa" && <PricingTable sections={qaSections} />}
+                  </motion.div>
+                </AnimatePresence>
+
+                <p className="mt-5 text-center text-xs italic text-slate-400">{devMeta.footnote}</p>
+              </div>
+            )}
+
+            {/* Tab 3: ROI & Recurring Costs */}
+            {tab === "roi" && (
+              <div className="flex flex-col gap-6">
+                <p className="max-w-3xl text-sm text-slate-500 leading-relaxed">
+                  Kalkulasi pengembalian investasi (ROI) dan perbandingan penghematan biaya bulanan serta rincian biaya operasional tahunan untuk server, pemeliharaan, dan AI engine.
+                </p>
+
+                {/* ROI Headline Card */}
+                <div className="rounded-2xl bg-gradient-to-br from-[#1f3a3d] to-[#2c4a4e] p-6 text-white shadow-md">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex-1">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#86efac] block mb-1">
+                        Return On Investment
+                      </span>
+                      <h4 className="text-xl font-extrabold">{roiAnalysis.headline}</h4>
+                      <p className="mt-2 text-xs text-slate-200 leading-relaxed max-w-xl">
+                        {roiAnalysis.description}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl bg-emerald-500/10 border border-emerald-500/30 px-6 py-4 text-center shrink-0 min-w-[150px]">
+                      <span className="block text-3xl font-extrabold text-[#86efac]">{roiAnalysis.bepPeriod.split(" ")[0]}</span>
+                      <span className="text-xs uppercase tracking-widest text-[#86efac] font-bold">Months Payback</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comparison Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Monthly SaaS Cost (Buy)</span>
+                    <span className="text-lg font-extrabold text-slate-700">{roiAnalysis.monthlySaaS}</span>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm border-l-4 border-l-teal-600">
+                    <span className="block text-[10px] font-bold uppercase tracking-wide text-teal-600">Monthly Platform Cost (Build)</span>
+                    <span className="text-lg font-extrabold text-teal-700">{roiAnalysis.monthlyPlatform}</span>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-emerald-50 p-4 shadow-sm border-l-4 border-l-emerald-600">
+                    <span className="block text-[10px] font-bold uppercase tracking-wide text-emerald-800">Net Monthly Savings</span>
+                    <span className="text-lg font-extrabold text-emerald-800">+{roiAnalysis.monthlySavings}</span>
+                  </div>
+                </div>
+
+                {/* Recurring Table */}
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                  <div className="bg-[#1f3a3d] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
+                    Section B · Ongoing Recurring Costs (Annualized)
+                  </div>
+                  <div className="divide-y divide-slate-100">
+                    {recurringItems.map((item) => (
+                      <div key={item.code} className="px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-[#1f3a3d]">{item.code}</span>
+                            <span className="font-bold text-slate-700">{item.title}</span>
+                          </div>
+                          <span className="block text-[10.5px] text-slate-400 mt-0.5">{item.detail}</span>
+                        </div>
+                        <div className="flex md:flex-col items-baseline md:items-end justify-between md:justify-center gap-2 shrink-0">
+                          <span className="font-extrabold text-slate-900 text-sm">{item.annual}</span>
+                          <span className="text-[10px] text-slate-400">({item.monthly})</span>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex items-center justify-between bg-slate-50 px-4 py-3">
+                      <span className="text-xs font-bold uppercase tracking-wide text-slate-500">
+                        Total Annual Recurring Costs
+                      </span>
+                      <span className="text-md font-extrabold text-[#1f3a3d]">{grandRecurringTotal}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recurring Notes */}
+                <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wide text-slate-400 block mb-2">Notes</span>
+                  <ul className="list-disc pl-4 space-y-1 text-xs text-slate-500">
+                    {recurringNotes.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
+    </div>
+  );
+}
+
+// Sub-Tab Helpers
+function OverviewSubTab() {
+  const metaRows = [
+    { label: "Prepared For", value: devMeta.preparedFor },
+    { label: "Prepared By", value: devMeta.preparedBy },
+    { label: "Date", value: devMeta.date },
+    { label: "Currency", value: devMeta.currency },
+    { label: "Duration", value: devMeta.duration },
+    { label: "Status", value: devMeta.status },
+  ];
+
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="rounded-2xl bg-[#1f3a3d] p-5 text-white shadow-sm">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#86efac]">
+            Fixed Development Cost (One-Time)
+          </span>
+          <span className="mt-1 block text-3xl font-extrabold">{grandFixedTotal}</span>
+          <span className="text-xs text-white/70">Section A — total scope, before PPN (11%)</span>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
+            Ongoing Recurring Cost (Annual)
+          </span>
+          <span className="mt-1 block text-3xl font-extrabold text-[#1f3a3d]">{grandRecurringTotal}</span>
+          <span className="text-xs text-slate-400">Section B — from Year 1 onward</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 rounded-2xl border border-slate-200 bg-white p-4 sm:grid-cols-3">
+        {metaRows.map((row) => (
+          <div key={row.label}>
+            <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">
+              {row.label}
+            </span>
+            <span className="text-sm font-bold text-slate-800">{row.value}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5">
+        <span className="text-xs font-bold uppercase tracking-wide text-slate-500">
+          Fixed Cost Composition
+        </span>
+        <p className="mb-4 text-xs text-slate-400">Relative share of one-time development scope</p>
+        <div className="flex flex-col gap-2.5">
+          {composition.map((row) => (
+            <div key={row.section} className="flex items-center gap-3 text-xs">
+              <span className="w-10 shrink-0 font-bold text-slate-400">{row.section}</span>
+              <span className="w-56 shrink-0 truncate text-slate-700 font-medium">{row.description}</span>
+              <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${row.percent}%` }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="h-full rounded-full bg-teal-600"
+                />
+              </div>
+              <span className="w-12 shrink-0 text-right font-bold text-slate-600">{row.percent}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PricingTable({
+  sections,
+  grandTotal,
+}: {
+  sections: PricingSection[];
+  grandTotal?: GrandTotal;
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      {sections.map((section) => (
+        <div
+          key={section.id}
+          className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
+        >
+          <div className="bg-[#1f3a3d] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
+            {section.title}
+          </div>
+          <div className="divide-y divide-slate-100">
+            {section.items.map((item) => (
+              <div key={item.number} className="flex items-center gap-3 px-4 py-2 text-xs md:text-sm">
+                <span className="w-5 shrink-0 text-xs text-slate-300">{item.number}</span>
+                <span className="flex-1 font-medium text-slate-700">{item.deliverable}</span>
+                <span className="shrink-0 font-bold text-slate-900">{item.price}</span>
+              </div>
+            ))}
+            <div className="flex items-center justify-between bg-slate-50 px-4 py-2.5">
+              <span className="text-[10px] font-bold uppercase tracking-wide text-slate-500">
+                {section.subtotalLabel}
+              </span>
+              <span className="text-sm font-extrabold text-[#1f3a3d]">{section.subtotalPrice}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {grandTotal && (
+        <div className="flex items-center justify-between rounded-xl bg-amber-50 px-4 py-3 border border-amber-200">
+          <span className="text-xs font-bold uppercase tracking-wide text-amber-800">
+            {grandTotal.label}
+          </span>
+          <span className="text-lg font-extrabold text-amber-800">{grandTotal.price}</span>
+        </div>
+      )}
     </div>
   );
 }

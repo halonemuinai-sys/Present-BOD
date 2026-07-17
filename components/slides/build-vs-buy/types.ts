@@ -26,3 +26,18 @@ export const itemColorClasses: Record<ItemColor, { bg: string; text: string }> =
   blue: { bg: "bg-blue-100", text: "text-blue-600" },
   teal: { bg: "bg-teal-100", text: "text-teal-600" },
 };
+
+export type PriceItem = { number: number; deliverable: string; price: string };
+
+export type PricingSection = {
+  id: string;
+  title: string;
+  items: PriceItem[];
+  subtotalLabel: string;
+  subtotalPrice: string;
+};
+
+export type GrandTotal = { label: string; price: string };
+
+export type CompositionRow = { section: string; description: string; price: string; percent: number };
+
