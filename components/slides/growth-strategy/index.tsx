@@ -7,7 +7,7 @@ import AmbitionPanel from "./AmbitionPanel";
 import StrategyFlow from "./StrategyFlow";
 import GovernancePanel from "./GovernancePanel";
 import FooterBar from "./FooterBar";
-import MountainDots from "./MountainDots";
+import ClimbingDot from "./ClimbingDot";
 
 export default function GrowthStrategySlide() {
   return (
@@ -28,7 +28,7 @@ export default function GrowthStrategySlide() {
               "linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.3) 45%, rgba(255,255,255,0.08) 70%, transparent 100%)",
           }}
         />
-        <MountainDots />
+        <ClimbingDot />
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col gap-5 px-6 pb-4 pt-6 md:px-10">

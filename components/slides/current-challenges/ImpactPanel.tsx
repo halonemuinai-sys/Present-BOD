@@ -32,19 +32,24 @@ export default function ImpactPanel() {
         className="mt-4 flex flex-1 flex-col divide-y divide-slate-100"
       >
         {impactItems.map((item) => (
-          <motion.div key={item.title} variants={row} className="flex flex-1 items-center gap-3 py-3">
+          <motion.div
+            key={item.title}
+            variants={row}
+            whileHover={{ x: 6 }}
+            className="flex flex-1 items-center gap-3.5 py-3 transition-colors duration-200 hover:bg-slate-50 rounded-xl px-3 -mx-3 cursor-pointer group"
+          >
             <motion.span
               variants={iconStamp}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#101b3d]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#101b3d] text-white transition-all duration-200 group-hover:bg-red-600 group-hover:scale-105"
             >
-              <item.icon size={17} className="text-white" />
+              <item.icon size={17} />
             </motion.span>
-            <span>
-              <span className="block text-sm font-black uppercase leading-tight text-[#101b3d]">
+            <div>
+              <span className="block text-sm font-black uppercase leading-tight text-[#101b3d] group-hover:text-red-700 transition-colors duration-200">
                 {item.title}
               </span>
               <span className="mt-0.5 block text-xs leading-snug text-slate-500">{item.text}</span>
-            </span>
+            </div>
           </motion.div>
         ))}
       </motion.div>

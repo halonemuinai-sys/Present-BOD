@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, type Variants } from "framer-motion";
 import { Database } from "lucide-react";
 import { fragmentedLabel, hubLabel, leftSystemCards, rightSystemCards } from "./data";
@@ -27,38 +29,75 @@ export default function FragmentedSystemsPanel() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="mt-5 grid grid-cols-[1fr_auto_auto_auto_1fr] items-center gap-1.5"
+        className="mt-5 grid grid-cols-[1fr_auto_auto_auto_1fr] grid-rows-3 items-center gap-x-2 gap-y-3"
       >
-        <div className="flex flex-col gap-3">
-          {leftSystemCards.map((c) => (
-            <SystemCard key={c.title} data={c} />
-          ))}
+        {/* Row 1 Left */}
+        <div className="col-start-1 row-start-1">
+          <SystemCard data={leftSystemCards[0]} />
+        </div>
+        <div className="col-start-2 row-start-1">
+          <DashedArrow flip />
         </div>
 
-        <div className="flex flex-col justify-around gap-3 py-4">
-          {leftSystemCards.map((c) => (
-            <DashedArrow key={c.title} flip />
-          ))}
+        {/* Row 2 Left */}
+        <div className="col-start-1 row-start-2">
+          <SystemCard data={leftSystemCards[1]} />
+        </div>
+        <div className="col-start-2 row-start-2">
+          <DashedArrow flip />
         </div>
 
+        {/* Row 3 Left */}
+        <div className="col-start-1 row-start-3">
+          <SystemCard data={leftSystemCards[2]} />
+        </div>
+        <div className="col-start-2 row-start-3">
+          <DashedArrow flip />
+        </div>
+
+        {/* Center Hub: spans all 3 rows in column 3 */}
         <motion.div
           variants={hub}
-          className="relative flex h-28 w-28 shrink-0 flex-col items-center justify-center rounded-full border-4 border-red-100 bg-red-50 text-center shadow-sm"
+          animate={{
+            boxShadow: [
+              "0 0 0 0 rgba(239, 68, 68, 0.4)",
+              "0 0 0 12px rgba(239, 68, 68, 0)",
+              "0 0 0 0 rgba(239, 68, 68, 0.4)",
+            ],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="col-start-3 row-start-1 row-span-3 self-center relative flex h-28 w-28 shrink-0 flex-col items-center justify-center rounded-full border-4 border-red-100 bg-red-50 text-center shadow-sm z-10"
         >
           <Database size={22} className="text-red-500" />
           <p className="mt-1.5 px-3 text-[10px] font-black uppercase leading-tight text-[#101b3d]">{hubLabel}</p>
         </motion.div>
 
-        <div className="flex flex-col justify-around gap-3 py-4">
-          {rightSystemCards.map((c) => (
-            <DashedArrow key={c.title} />
-          ))}
+        {/* Row 1 Right */}
+        <div className="col-start-4 row-start-1">
+          <DashedArrow />
+        </div>
+        <div className="col-start-5 row-start-1">
+          <SystemCard data={rightSystemCards[0]} flip />
         </div>
 
-        <div className="flex flex-col gap-3">
-          {rightSystemCards.map((c) => (
-            <SystemCard key={c.title} data={c} flip />
-          ))}
+        {/* Row 2 Right */}
+        <div className="col-start-4 row-start-2">
+          <DashedArrow />
+        </div>
+        <div className="col-start-5 row-start-2">
+          <SystemCard data={rightSystemCards[1]} flip />
+        </div>
+
+        {/* Row 3 Right */}
+        <div className="col-start-4 row-start-3">
+          <DashedArrow />
+        </div>
+        <div className="col-start-5 row-start-3">
+          <SystemCard data={rightSystemCards[2]} flip />
         </div>
       </motion.div>
     </div>

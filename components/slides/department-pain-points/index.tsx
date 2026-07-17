@@ -8,6 +8,8 @@ import DepartmentCard from "./DepartmentCard";
 import InsightBar from "./InsightBar";
 import MarketingPlatformModal from "./marketing-platform/MarketingPlatformModal";
 import GeneralAffairsModal from "./general-affairs/GeneralAffairsModal";
+import ComplianceModal from "./compliance/ComplianceModal";
+import LegalModal from "./legal/LegalModal";
 import type { Department } from "./types";
 
 const container: Variants = {
@@ -77,6 +79,8 @@ export default function DepartmentPainPointsSlide() {
         {openModal === "general-affairs" && (
           <GeneralAffairsModal onClose={() => setOpenModal(null)} />
         )}
+        {openModal === "compliance" && <ComplianceModal onClose={() => setOpenModal(null)} />}
+        {openModal === "legal" && <LegalModal onClose={() => setOpenModal(null)} />}
       </AnimatePresence>
     </div>
   );

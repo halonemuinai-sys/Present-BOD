@@ -1,5 +1,7 @@
+"use client";
+
 import { motion, type Variants } from "framer-motion";
-import type { Track } from "./types";
+import type { Track, Bar } from "./types";
 import { variantClasses } from "./types";
 
 const barVariants: Variants = {
@@ -12,7 +14,13 @@ const tagClasses = {
   amber: "text-amber-700",
 };
 
-export default function TrackRow({ track, cols }: { track: Track; cols: number }) {
+interface TrackRowProps {
+  track: Track;
+  cols: number;
+  onBarClick?: (bar: Bar) => void;
+}
+
+export default function TrackRow({ track, cols, onBarClick }: TrackRowProps) {
   return (
     <div
       className="grid items-center gap-y-1.5 py-3"
@@ -40,8 +48,10 @@ export default function TrackRow({ track, cols }: { track: Track; cols: number }
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          onClick={() => onBarClick?.(bar)}
           style={{ gridColumn: `${bar.start + 1} / ${bar.end + 2}`, transformOrigin: "left" }}
-          className={`mx-1 flex min-h-10 items-center justify-center rounded-lg px-2 py-1.5 text-center text-[11px] font-bold leading-tight ${variantClasses[bar.variant]}`}
+          className={`mx-1 flex min-h-10 items-center justify-center rounded-lg px-2 py-1.5 text-center text-[11px] font-bold leading-tight cursor-pointer hover:brightness-105 active:scale-[0.98] transition-all select-none ${variantClasses[bar.variant]}`}
+          whileHover={{ scale: 1.015 }}
         >
           {bar.label}
         </motion.div>

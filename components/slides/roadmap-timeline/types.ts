@@ -1,6 +1,13 @@
 export type BarVariant = "prep" | "build" | "milestone";
 
-export type Bar = { label: string; start: number; end: number; variant: BarVariant };
+export type Bar = {
+  label: string;
+  start: number;
+  end: number;
+  variant: BarVariant;
+  description?: string;
+  features?: string[];
+};
 
 export type TrackTag = { text: string; color: "green" | "amber" };
 

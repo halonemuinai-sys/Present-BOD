@@ -15,7 +15,7 @@ export type Department = {
   painPoints: string[];
   examples: ExampleTag[];
   remark: string;
-  modalId?: "marketing-platform" | "general-affairs";
+  modalId?: "marketing-platform" | "general-affairs" | "compliance" | "legal";
 };
 
 export type InsightData = { icon: LucideIcon; title: string; text: string };

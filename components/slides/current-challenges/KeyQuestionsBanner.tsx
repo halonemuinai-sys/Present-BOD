@@ -38,12 +38,18 @@ export default function KeyQuestionsBanner() {
           <motion.div
             key={q.number}
             variants={item}
-            className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5"
+            whileHover={{
+              y: -3,
+              scale: 1.015,
+              boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.05)",
+              borderColor: "#60a5fa",
+            }}
+            className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 cursor-pointer transition-colors duration-200 group"
           >
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-black text-[#101b3d]">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-black text-[#101b3d] transition-colors duration-200 group-hover:bg-[#101b3d] group-hover:text-white">
               {q.number}
             </span>
-            <p className="text-sm leading-snug text-[#101b3d]">{q.text}</p>
+            <p className="text-sm leading-snug text-[#101b3d] group-hover:text-blue-900 transition-colors duration-200">{q.text}</p>
           </motion.div>
         ))}
       </motion.div>

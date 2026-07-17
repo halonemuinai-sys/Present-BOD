@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-export type ItemCardData = { icon: LucideIcon; title: string; subtitle: string };
+export type ItemCardData = { icon: LucideIcon; title: string; subtitle: string; isInHouse?: boolean };
 
 export type SmallItem = { icon: LucideIcon; label: string };
 

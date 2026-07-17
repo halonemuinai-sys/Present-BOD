@@ -60,6 +60,7 @@ export const departments: Department[] = [
       { icon: Archive, label: "Filing Cabinets" },
     ],
     remark: "In Development",
+    modalId: "legal",
   },
   {
     number: "03",
@@ -77,6 +78,7 @@ export const departments: Department[] = [
       { icon: Bell, label: "Reactive Approach" },
     ],
     remark: "In Development",
+    modalId: "compliance",
   },
   {
     number: "04",

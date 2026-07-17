@@ -26,7 +26,7 @@ import type { ImpactStep, ItemCardData, SmallItem } from "./types";
 export const dataSourceItems: ItemCardData[] = [
   { icon: Briefcase, title: "Retailsoft", subtitle: "POS & Retail Data" },
   { icon: Landmark, title: "Netsuite", subtitle: "ERP & Finance Data" },
-  { icon: Building2, title: "Enterprise Operations Platform", subtitle: "Operations & Workflow Data" },
+  { icon: Building2, title: "Enterprise Operations Platform", subtitle: "Operations & Workflow Data", isInHouse: true },
   { icon: Users, title: "Talenta", subtitle: "HR & Employee Data" },
   { icon: FileSpreadsheet, title: "Raw Data", subtitle: "Files / Spreadsheets / Unstructured Data" },
   { icon: Database, title: "Other Database", subtitle: "Internal / External Database" },

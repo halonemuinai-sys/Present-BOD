@@ -10,8 +10,13 @@ export default function SystemCard({ data, flip }: { data: SystemCardData; flip?
   return (
     <motion.div
       variants={flip ? { hidden: { opacity: 0, x: 12 }, visible: card.visible } : card}
-      whileHover={{ y: -2 }}
-      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm"
+      whileHover={{
+        y: -3,
+        scale: 1.02,
+        boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.08)",
+        borderColor: "#94a3b8",
+      }}
+      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm cursor-pointer transition-colors duration-200"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#101b3d] text-white">
         <data.icon size={18} />

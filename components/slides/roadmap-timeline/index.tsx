@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Check, X } from "lucide-react";
 import { inHouseData, agencyData } from "./data";
 import MonthHeader from "./MonthHeader";
 import TrackRow from "./TrackRow";
 import Legend from "./Legend";
+import type { Bar } from "./types";
 
 export default function RoadmapTimelineSlide() {
   const [tab, setTab] = useState<"inHouse" | "agency">("inHouse");
+  const [selectedBar, setSelectedBar] = useState<Bar | null>(null);
 
   const data = tab === "inHouse" ? inHouseData : agencyData;
   const cols = data.months.length * 2;
@@ -31,7 +34,10 @@ export default function RoadmapTimelineSlide() {
           
           <div className="inline-flex rounded-full bg-slate-200/50 p-1 backdrop-blur-sm shrink-0">
             <button
-              onClick={() => setTab("inHouse")}
+              onClick={() => {
+                setTab("inHouse");
+                setSelectedBar(null);
+              }}
               className={`cursor-pointer rounded-full px-5 py-1.5 text-xs font-bold transition-all duration-300 ${
                 tab === "inHouse"
                   ? "bg-[#25454a] text-white shadow-md"
@@ -41,7 +47,10 @@ export default function RoadmapTimelineSlide() {
               In-house Developer
             </button>
             <button
-              onClick={() => setTab("agency")}
+              onClick={() => {
+                setTab("agency");
+                setSelectedBar(null);
+              }}
               className={`cursor-pointer rounded-full px-5 py-1.5 text-xs font-bold transition-all duration-300 ${
                 tab === "agency"
                   ? "bg-[#25454a] text-white shadow-md"
@@ -81,7 +90,12 @@ export default function RoadmapTimelineSlide() {
                 
                 <div className="relative flex flex-col divide-y divide-slate-100">
                   {data.tracks.map((track) => (
-                    <TrackRow key={track.title} track={track} cols={cols} />
+                    <TrackRow
+                      key={track.title}
+                      track={track}
+                      cols={cols}
+                      onBarClick={setSelectedBar}
+                    />
                   ))}
                 </div>
               </div>
@@ -143,6 +157,88 @@ export default function RoadmapTimelineSlide() {
             )}
 
           </motion.div>
+        </AnimatePresence>
+
+        {/* Detail Popup Modal */}
+        <AnimatePresence>
+          {selectedBar && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedBar(null)}
+                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm cursor-pointer"
+              />
+
+              {/* Modal Body */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl"
+              >
+                {/* Header colored based on bar variant */}
+                <div
+                  className={`flex items-center justify-between px-6 py-4 text-white ${
+                    selectedBar.variant === "prep"
+                      ? "bg-gradient-to-r from-[#7c9a9e] to-[#607e81]"
+                      : selectedBar.variant === "build"
+                      ? "bg-gradient-to-r from-[#25454a] to-[#1f3a3d]"
+                      : "bg-gradient-to-r from-amber-700 to-amber-800"
+                  }`}
+                >
+                  <div>
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
+                      {selectedBar.variant === "prep"
+                        ? "Preparation & Setup"
+                        : selectedBar.variant === "build"
+                        ? "Module Development"
+                        : "Milestone Release"}
+                    </span>
+                    <h4 className="text-base font-extrabold">{selectedBar.label}</h4>
+                  </div>
+                  <button
+                    onClick={() => setSelectedBar(null)}
+                    className="cursor-pointer rounded-full p-1.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  {selectedBar.description ? (
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
+                      {selectedBar.description}
+                    </p>
+                  ) : (
+                    <p className="text-xs md:text-sm italic text-slate-400">
+                      No detailed description available.
+                    </p>
+                  )}
+
+                  {selectedBar.features && selectedBar.features.length > 0 && (
+                    <div className="mt-4">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                        Key deliverables &amp; features
+                      </span>
+                      <ul className="space-y-2">
+                        {selectedBar.features.map((feat) => (
+                          <li key={feat} className="flex items-start gap-2.5 text-xs text-slate-700 font-bold leading-normal">
+                            <Check size={14} className="mt-0.5 shrink-0 text-emerald-600" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          )}
         </AnimatePresence>
 
       </div>
