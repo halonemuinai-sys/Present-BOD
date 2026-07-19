@@ -1,10 +1,10 @@
 import type { ComparisonColumn, SystemBoxData } from "./types";
 
 export const slideNumber = "11";
-export const slideLabel = "Solusi yang Diusulkan";
-export const slideTitle = "Bukan Dashboard Duplikat, Melainkan Lapisan Konsolidasi";
+export const slideLabel = "Proposed Solution";
+export const slideTitle = "Not a Duplicate Dashboard, But a Consolidation Layer";
 export const slideSubtitle =
-  "Sistem yang sudah berjalan tetap digunakan untuk operasional harian. Yang dikembangkan adalah satu strategic view tambahan yang menyatukan seluruh sistem tersebut untuk Board.";
+  "Existing systems stay in place for day-to-day operations. What we're building is one additional strategic view that unifies all of them for the Board.";
 
 export const sourceSystems: SystemBoxData[] = [
   { title: "NetSuite (Finance)" },
@@ -14,31 +14,31 @@ export const sourceSystems: SystemBoxData[] = [
 ];
 
 export const currentColumn: ComparisonColumn = {
-  label: "Sistem Saat Ini",
+  label: "Current System",
   title: "System of Record",
-  subtitle: "Per sumber data, untuk tim operasional",
+  subtitle: "Per data source, for operational teams",
   accent: "amber",
-  steps: ["4–6 Dashboard Terpisah, Per Fungsi"],
+  steps: ["4–6 Separate Dashboards, Per Function"],
   bullets: [
     "Single-domain, single-entity",
-    "KPI mengikuti standar vendor masing-masing",
-    "Tidak otomatis terkonsolidasi antar BU",
-    "Penambahan fitur/kustomisasi = biaya tambahan ke vendor",
-    "Hanya menampilkan present value (snapshot saat ini)",
+    "KPIs follow each vendor's own standard",
+    "Not automatically consolidated across BUs",
+    "Adding features/customization = extra cost to the vendor",
+    "Shows only present value (a current snapshot)",
   ],
 };
 
 export const proposedColumn: ComparisonColumn = {
-  label: "Solusi yang Dibangun",
+  label: "Solution Being Built",
   title: "System of Insight",
-  subtitle: "Konsolidasi lintas fungsi & BU, untuk Board/C-Level",
+  subtitle: "Consolidated across functions & BUs, for Board/C-Level",
   accent: "green",
   steps: ["Data Warehouse (ETL/ELT)", "Executive Dashboard + AI Analytics"],
   bullets: [
-    "Satu definisi KPI, apple-to-apple antar BU",
-    "Korelasi lintas fungsi, misalnya cost HR vs margin BU",
-    "Forecasting & anomaly detection otomatis",
-    "Dikembangkan in-house, tanpa biaya tambahan ke vendor luar",
-    "Mengakomodir past (tren historis) & future (forecast), bukan cuma present",
+    "One KPI definition, apple-to-apple across BUs",
+    "Cross-functional correlation, e.g. HR cost vs BU margin",
+    "Automated forecasting & anomaly detection",
+    "Developed in-house, no extra cost to external vendors",
+    "Covers past (historical trends) & future (forecast), not just present",
   ],
 };
