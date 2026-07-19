@@ -10,6 +10,7 @@ import BigDataPipelineSlide from "@/components/slides/big-data-pipeline";
 import DepartmentPainPointsSlide from "@/components/slides/department-pain-points";
 import RoadmapTimelineSlide from "@/components/slides/roadmap-timeline";
 import BuildVsBuySlide from "@/components/slides/build-vs-buy";
+import ConsolidationLayerSlide from "@/components/slides/consolidation-layer";
 
 
 // Edit this array to build your own deck.
@@ -68,6 +69,11 @@ export const slides: Slide[] = [
     Component: BuildVsBuySlide,
   },
 
+  {
+    type: "diagram",
+    id: "consolidation-layer",
+    Component: ConsolidationLayerSlide,
+  },
   {
     type: "diagram",
     id: "enterprise-ecosystem",
