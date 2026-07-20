@@ -47,8 +47,8 @@ export default function SourceSystemsGrid() {
             }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
             whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.4 } }}
-            className={`flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-200 group-hover:scale-110 ${
-              s.logoDomain ? "bg-white ring-2 ring-amber-100" : "bg-[#d99a2b]"
+            className={`flex h-11 w-11 items-center justify-center rounded-full shadow-sm ring-2 ring-amber-100 transition-transform duration-200 group-hover:scale-110 ${
+              s.logoDomain ? "bg-slate-50" : "bg-[#d99a2b]"
             }`}
           >
             {s.logoDomain ? (
@@ -56,13 +56,14 @@ export default function SourceSystemsGrid() {
               <img
                 src={`https://www.google.com/s2/favicons?domain=${s.logoDomain}&sz=64`}
                 alt=""
-                className="h-6 w-6"
+                className="h-6 w-6 rounded-sm object-contain"
               />
             ) : (
               <s.icon size={20} className="text-white" />
             )}
           </motion.span>
           <p className="text-xs font-black leading-tight text-[#101b3d]">{s.label}</p>
+          <span className="h-0.5 w-6 rounded-full bg-[#d99a2b]/40 transition-all duration-200 group-hover:w-9 group-hover:bg-[#d99a2b]" />
         </motion.div>
       ))}
     </motion.div>

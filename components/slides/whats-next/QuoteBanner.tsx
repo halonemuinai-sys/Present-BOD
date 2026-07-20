@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { quoteEyebrow, quoteHighlight } from "./data";
+import { quoteEyebrow } from "./data";
 
 export default function QuoteBanner() {
   return (
@@ -16,7 +16,6 @@ export default function QuoteBanner() {
         &rdquo;
       </span>
       <p className="text-lg font-black uppercase leading-snug text-[#101b3d] md:text-xl">{quoteEyebrow}</p>
-      <p className="mt-1 text-base font-bold text-[#d99a2b] md:text-lg">&ldquo;{quoteHighlight}&rdquo;</p>
     </motion.div>
   );
 }

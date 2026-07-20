@@ -3,12 +3,9 @@ import type { PillarCard, PillarStatus } from "./types";
 
 export const slideNumber = "10";
 export const slideTitle = "What's Next";
-export const slideSubtitlePrefix = "Through ";
-export const slideSubtitleBold = "Disciplined";
-export const slideSubtitleSuffix = " Execution and Data-Driven Decision Making";
+export const slideSubtitle = "Action-Oriented";
 
 export const quoteEyebrow = "Mitigation Pillars & Operational Standardization";
-export const quoteHighlight = "Building a Secure, Accountable, and Consistent System";
 
 export const pillars: PillarCard[] = [
   { number: 1, icon: Database, title: "Risk Assessment", status: "next" },
@@ -21,6 +18,4 @@ export const statusLabel: Record<PillarStatus, string> = {
   development: "IN DEVELOPMENT",
 };
 
-export const decisionLabel = "Decision Required";
-export const decisionIntro = "Approval needed for:";
-export const approvalItems = ["KPI Framework", "IT", "MRA MU Project"];
+export const readyBannerText = "Ready for Execution: Standing by for Board Authorization to Launch";

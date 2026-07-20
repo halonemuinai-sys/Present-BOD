@@ -22,7 +22,11 @@ export default function RoadmapTimelineSlide() {
       <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center px-6 py-8 md:px-10">
         
         {/* Header and Tab switcher aligned horizontally */}
-        <div className="mb-4 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="mb-4 flex items-start gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#101b3d] text-2xl font-black text-white md:h-14 md:w-14 md:text-3xl">
+            9
+          </span>
+          <div className="flex flex-1 flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#25454a]">
@@ -76,6 +80,7 @@ export default function RoadmapTimelineSlide() {
             >
               MRAMU
             </button>
+          </div>
           </div>
         </div>
 

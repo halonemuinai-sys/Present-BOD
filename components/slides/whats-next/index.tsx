@@ -1,14 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import {
-  pillars,
-  slideNumber,
-  slideSubtitleBold,
-  slideSubtitlePrefix,
-  slideSubtitleSuffix,
-  slideTitle,
-} from "./data";
+import { pillars, slideNumber, slideSubtitle, slideTitle } from "./data";
 import QuoteBanner from "./QuoteBanner";
 import PillarCardItem from "./PillarCardItem";
 import DecisionBanner from "./DecisionBanner";
@@ -38,11 +31,7 @@ export default function WhatsNextSlide() {
             <h1 className="text-2xl font-black leading-tight tracking-tight text-[#101b3d] md:text-4xl">
               {slideTitle}
             </h1>
-            <p className="mt-1 inline-block border-b-2 border-[#d99a2b] pb-0.5 text-sm text-slate-500 md:text-base">
-              {slideSubtitlePrefix}
-              <span className="font-bold text-slate-700">{slideSubtitleBold}</span>
-              {slideSubtitleSuffix}
-            </p>
+            <p className="mt-1 text-sm text-slate-500 md:text-base">{slideSubtitle}</p>
           </div>
         </motion.div>
 

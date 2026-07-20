@@ -47,7 +47,11 @@ export default function BuildVsBuySlide() {
       <div className="relative mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center px-6 py-8 md:px-10">
         
         {/* Header and Tab switcher aligned horizontally */}
-        <div className="mb-5 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="mb-5 flex items-start gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#101b3d] text-2xl font-black text-white md:h-14 md:w-14 md:text-3xl">
+            8
+          </span>
+          <div className="flex flex-1 flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#2c4a4e]">
@@ -118,6 +122,7 @@ export default function BuildVsBuySlide() {
             >
               ROI &amp; Recurring
             </button>
+          </div>
           </div>
         </div>
 
