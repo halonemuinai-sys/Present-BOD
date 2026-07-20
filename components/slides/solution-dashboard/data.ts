@@ -91,4 +91,4 @@ export const benefits: BenefitItem[] = [
 ];
 
 export const summaryParts = ["System of Record", "Integrated Dashboard"];
-export const summaryResult = "Accurate Insight, Better Decision, Aggressive Growth";
+export const summaryResult = "Accurate Insight, Better Decision, Sustainable Growth";

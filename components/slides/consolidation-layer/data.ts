@@ -14,7 +14,7 @@ export const sourceSystems: SystemBoxData[] = [
 ];
 
 export const currentColumn: ComparisonColumn = {
-  label: "Current System",
+  label: "Phase 1",
   title: "System of Record",
   subtitle: "Per data source, for operational teams",
   accent: "amber",
@@ -29,7 +29,7 @@ export const currentColumn: ComparisonColumn = {
 };
 
 export const proposedColumn: ComparisonColumn = {
-  label: "Solution Being Built",
+  label: "Phase 2",
   title: "System of Insight",
   subtitle: "Consolidated across functions & BUs, for Board/C-Level",
   accent: "green",

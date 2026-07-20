@@ -1,15 +1,4 @@
-import {
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Cloud,
-  Database,
-  FileCheck2,
-  FileText,
-  MonitorCheck,
-  ShieldCheck,
-  Workflow,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Cloud, Database, MonitorCheck, Workflow } from "lucide-react";
 import type { EnablerCard, EnablerStatus } from "./types";
 
 export const slideNumber = "5";
@@ -54,12 +43,6 @@ export const enablerRow1: EnablerCard[] = [
     description: "Providing real-time KPI monitoring, performance visibility, and executive decision support.",
     status: "in-development",
   },
-];
-
-export const enablerRow2: EnablerCard[] = [
-  { number: 5, icon: ShieldCheck, title: "Risk Assessment", status: "next-project" },
-  { number: 6, icon: FileCheck2, title: "SODA & SOP", status: "in-development" },
-  { number: 7, icon: FileText, title: "Document Template", status: "in-development" },
 ];
 
 export const statusMeta: Record<

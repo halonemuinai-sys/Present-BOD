@@ -2,22 +2,23 @@
 
 import { motion, type Variants } from "framer-motion";
 import {
-  enablerRow1,
+  footnote,
+  pillars,
   slideNumber,
   slideSubtitleBold,
   slideSubtitlePrefix,
   slideSubtitleSuffix,
   slideTitle,
 } from "./data";
-import EnablerCardItem from "./EnablerCardItem";
 import QuoteBanner from "./QuoteBanner";
+import PillarCardItem from "./PillarCardItem";
 
 const container: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
 };
 
-export default function EnablerRequiredSlide() {
+export default function WhatsNextSlide() {
   return (
     <div className="relative h-full w-full overflow-y-auto bg-white">
       <div className="pointer-events-none absolute bottom-[-10%] left-[-5%] h-72 w-72 rounded-full bg-blue-400 opacity-[0.08] blur-3xl" />
@@ -52,12 +53,14 @@ export default function EnablerRequiredSlide() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-3"
         >
-          {enablerRow1.map((c, i) => (
-            <EnablerCardItem key={c.number} data={c} showArrow={i < enablerRow1.length - 1} />
+          {pillars.map((p, i) => (
+            <PillarCardItem key={p.number} data={p} showArrow={i < pillars.length - 1} />
           ))}
         </motion.div>
+
+        <p className="text-center text-sm italic font-semibold text-slate-500 md:text-base">{footnote}</p>
       </div>
     </div>
   );

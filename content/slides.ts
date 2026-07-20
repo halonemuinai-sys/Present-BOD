@@ -11,6 +11,7 @@ import DepartmentPainPointsSlide from "@/components/slides/department-pain-point
 import RoadmapTimelineSlide from "@/components/slides/roadmap-timeline";
 import BuildVsBuySlide from "@/components/slides/build-vs-buy";
 import ConsolidationLayerSlide from "@/components/slides/consolidation-layer";
+import WhatsNextSlide from "@/components/slides/whats-next";
 
 
 // Edit this array to build your own deck.
@@ -72,6 +73,11 @@ export const slides: Slide[] = [
     type: "diagram",
     id: "build-vs-buy",
     Component: BuildVsBuySlide,
+  },
+  {
+    type: "diagram",
+    id: "whats-next",
+    Component: WhatsNextSlide,
   },
   {
     type: "diagram",
