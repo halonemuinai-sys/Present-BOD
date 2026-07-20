@@ -1,19 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, type Variants } from "framer-motion";
-import { footerQuote, pillars } from "./data";
+import { motion } from "framer-motion";
 import GrowthVisual from "./GrowthVisual";
-
-const container: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
-};
-
-const pillarItem: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 240, damping: 22 } },
-};
 
 export default function CoverHeroSlide() {
   return (
@@ -32,60 +21,40 @@ export default function CoverHeroSlide() {
               alt="MRA Group"
               width={320}
               height={128}
-              className="h-20 w-auto object-contain md:h-24"
+              className="h-24 w-auto object-contain md:h-28"
               priority
             />
-            <h1 className="mt-3 text-4xl font-black uppercase leading-[0.95] tracking-tight md:text-6xl">
-              <span className="text-[#101b3d]">
-                MRA
-                <br />
-                Integrated
-                <br />
+            <div className="mt-6 flex items-center gap-3">
+              <span className="flex items-center gap-1.5">
+                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
+                <span className="h-px w-8 bg-[#d99a2b]" />
               </span>
-              <span className="text-[#d99a2b]">Performance Platform</span>
-            </h1>
-            <div className="mt-5 h-1 w-16 bg-[#d99a2b]" />
-            <p className="mt-5 text-base font-black uppercase leading-snug tracking-wide text-[#101b3d] md:text-lg">
-              Building a Secure, Accountable,
+              <span className="text-base font-bold uppercase tracking-[0.35em] text-[#101b3d]">Project</span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
+                <span className="h-px w-8 bg-[#d99a2b]" />
+              </span>
+            </div>
+            <div className="relative">
+              <div className="bg-glow-gold -left-10 -top-16" />
+              <h1 className="relative mt-2 text-7xl font-black uppercase leading-[0.9] tracking-tight text-[#101b3d] md:text-8xl lg:text-9xl">
+                Synergy
+              </h1>
+            </div>
+            <div className="mt-6 flex items-center gap-2">
+              <span className="h-3 w-3 rounded-full bg-[#d99a2b]" />
+              <span className="h-0.5 w-28 bg-[#d99a2b]" />
+            </div>
+            <p className="mt-6 text-2xl font-bold leading-snug text-[#101b3d] md:text-3xl lg:text-4xl">
+              <span className="text-[#d99a2b]">Aligning</span> Processes,
               <br />
-              and Consistent System
+              <span className="text-[#d99a2b]">Synergizing</span> Functions,
+              <br />
+              Sustainable Growth.
             </p>
           </motion.div>
-
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            className="mt-10 flex items-stretch gap-2"
-          >
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.label1}
-                variants={pillarItem}
-                className={`flex w-28 shrink-0 flex-col items-center gap-2.5 text-center md:w-32 ${
-                  i > 0 ? "border-l border-slate-200 pl-4 md:pl-6" : ""
-                }`}
-              >
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#101b3d] md:h-16 md:w-16">
-                  <p.icon size={26} className="text-[#d99a2b]" />
-                </div>
-                <p className="break-words text-[11px] font-black uppercase leading-tight text-[#101b3d] md:text-xs">
-                  {p.label1}
-                  <br />
-                  <span className="text-[#d99a2b]">{p.label2}</span>
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-            className="mt-10 max-w-sm border-l-2 border-[#d99a2b] pl-3 text-base font-medium leading-snug text-slate-600"
-          >
-            {footerQuote}
-          </motion.p>
         </div>
       </div>
     </div>
