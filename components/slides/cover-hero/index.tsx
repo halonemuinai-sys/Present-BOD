@@ -24,13 +24,13 @@ export default function CoverHeroSlide() {
               className="h-24 w-auto object-contain md:h-28"
               priority
             />
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex items-center justify-center gap-3">
               <span className="flex items-center gap-1.5">
                 <span className="h-px w-10 bg-[#d99a2b]" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
                 <span className="h-px w-10 bg-[#d99a2b]" />
               </span>
-              <span className="text-xl font-bold uppercase tracking-[0.35em] text-[#101b3d] md:text-2xl">Project</span>
+              <span className="text-2xl font-bold uppercase tracking-[0.35em] text-[#101b3d] md:text-3xl">Project</span>
               <span className="flex items-center gap-1.5">
                 <span className="h-px w-10 bg-[#d99a2b]" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
@@ -39,7 +39,7 @@ export default function CoverHeroSlide() {
             </div>
             <div className="relative">
               <div className="bg-glow-gold -left-10 -top-16" />
-              <h1 className="relative mt-2 text-7xl font-black uppercase leading-[0.9] tracking-tight text-[#101b3d] md:text-8xl lg:text-9xl">
+              <h1 className="relative mt-2 text-[13vw] font-black uppercase leading-[0.85] tracking-tight text-[#101b3d] md:text-[10vw]">
                 Synergy
               </h1>
             </div>
