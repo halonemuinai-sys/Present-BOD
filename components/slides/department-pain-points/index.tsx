@@ -33,6 +33,20 @@ export default function DepartmentPainPointsSlide() {
             <span className="text-xs font-bold uppercase tracking-widest text-green-700">
               Current Issues &amp; Pain Points
             </span>
+            <motion.span
+              animate={{
+                scale: [1, 1.08, 1],
+                boxShadow: [
+                  "0 0 0 0 rgba(217, 154, 43, 0.5)",
+                  "0 0 0 6px rgba(217, 154, 43, 0)",
+                  "0 0 0 0 rgba(217, 154, 43, 0.5)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-full bg-[#101b3d] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wide text-white"
+            >
+              Phase 1
+            </motion.span>
           </div>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
             Four Departments, Four Silos

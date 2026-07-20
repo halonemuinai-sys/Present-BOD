@@ -21,4 +21,5 @@ export const statusLabel: Record<PillarStatus, string> = {
   development: "IN DEVELOPMENT",
 };
 
-export const footnote = "Decision Required Approval of: KPI Framework, IT & MRA MU Project";
+export const decisionLabel = "Decision Required";
+export const decisionText = "Approval of: KPI Framework, IT & MRA MU Project";

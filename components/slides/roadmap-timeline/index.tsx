@@ -24,9 +24,26 @@ export default function RoadmapTimelineSlide() {
         {/* Header and Tab switcher aligned horizontally */}
         <div className="mb-4 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#25454a]">
-              {data.eyebrow}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#25454a]">
+                {data.eyebrow}
+              </span>
+              <motion.span
+                key={tab}
+                animate={{
+                  scale: [1, 1.08, 1],
+                  boxShadow: [
+                    "0 0 0 0 rgba(217, 154, 43, 0.5)",
+                    "0 0 0 6px rgba(217, 154, 43, 0)",
+                    "0 0 0 0 rgba(217, 154, 43, 0.5)",
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="rounded-full bg-[#101b3d] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wide text-white"
+              >
+                {tab === "inHouse" ? "Phase 1" : "Phase 2"}
+              </motion.span>
+            </div>
             <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl transition-all duration-300">
               {data.title}
             </h1>

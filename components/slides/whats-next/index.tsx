@@ -2,7 +2,6 @@
 
 import { motion, type Variants } from "framer-motion";
 import {
-  footnote,
   pillars,
   slideNumber,
   slideSubtitleBold,
@@ -12,6 +11,7 @@ import {
 } from "./data";
 import QuoteBanner from "./QuoteBanner";
 import PillarCardItem from "./PillarCardItem";
+import DecisionBanner from "./DecisionBanner";
 
 const container: Variants = {
   hidden: {},
@@ -60,7 +60,7 @@ export default function WhatsNextSlide() {
           ))}
         </motion.div>
 
-        <p className="text-center text-sm italic font-semibold text-slate-500 md:text-base">{footnote}</p>
+        <DecisionBanner />
       </div>
     </div>
   );

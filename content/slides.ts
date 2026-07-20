@@ -1,12 +1,12 @@
 import type { Slide } from "@/lib/types";
-import EnterpriseEcosystemSlide from "@/components/slides/enterprise-ecosystem";
+// import EnterpriseEcosystemSlide from "@/components/slides/enterprise-ecosystem"; // hidden — re-add to slides[] below to restore
 import CoverHeroSlide from "@/components/slides/cover-hero";
 import GrowthStrategySlide from "@/components/slides/growth-strategy";
 import KpiFrameworkSlide from "@/components/slides/kpi-framework";
 import CurrentChallengesSlide from "@/components/slides/current-challenges";
 import SolutionDashboardSlide from "@/components/slides/solution-dashboard";
 import EnablerRequiredSlide from "@/components/slides/enabler-required";
-import BigDataPipelineSlide from "@/components/slides/big-data-pipeline";
+// import BigDataPipelineSlide from "@/components/slides/big-data-pipeline"; // hidden — re-add to slides[] below to restore
 import DepartmentPainPointsSlide from "@/components/slides/department-pain-points";
 import RoadmapTimelineSlide from "@/components/slides/roadmap-timeline";
 import BuildVsBuySlide from "@/components/slides/build-vs-buy";
@@ -56,18 +56,8 @@ export const slides: Slide[] = [
   },
   {
     type: "diagram",
-    id: "big-data-pipeline",
-    Component: BigDataPipelineSlide,
-  },
-  {
-    type: "diagram",
     id: "department-pain-points",
     Component: DepartmentPainPointsSlide,
-  },
-  {
-    type: "diagram",
-    id: "roadmap-timeline",
-    Component: RoadmapTimelineSlide,
   },
   {
     type: "diagram",
@@ -76,12 +66,23 @@ export const slides: Slide[] = [
   },
   {
     type: "diagram",
-    id: "whats-next",
-    Component: WhatsNextSlide,
+    id: "roadmap-timeline",
+    Component: RoadmapTimelineSlide,
   },
   {
     type: "diagram",
-    id: "enterprise-ecosystem",
-    Component: EnterpriseEcosystemSlide,
+    id: "whats-next",
+    Component: WhatsNextSlide,
   },
+  // Hidden slides (kept in the codebase, just not in the active deck):
+  // {
+  //   type: "diagram",
+  //   id: "enterprise-ecosystem",
+  //   Component: EnterpriseEcosystemSlide,
+  // },
+  // {
+  //   type: "diagram",
+  //   id: "big-data-pipeline",
+  //   Component: BigDataPipelineSlide,
+  // },
 ];
