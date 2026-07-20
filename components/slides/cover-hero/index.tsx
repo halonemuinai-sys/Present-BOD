@@ -26,15 +26,15 @@ export default function CoverHeroSlide() {
             />
             <div className="mt-6 flex items-center gap-3">
               <span className="flex items-center gap-1.5">
-                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-px w-10 bg-[#d99a2b]" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
-                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-px w-10 bg-[#d99a2b]" />
               </span>
-              <span className="text-base font-bold uppercase tracking-[0.35em] text-[#101b3d]">Project</span>
+              <span className="text-xl font-bold uppercase tracking-[0.35em] text-[#101b3d] md:text-2xl">Project</span>
               <span className="flex items-center gap-1.5">
-                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-px w-10 bg-[#d99a2b]" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#d99a2b]" />
-                <span className="h-px w-8 bg-[#d99a2b]" />
+                <span className="h-px w-10 bg-[#d99a2b]" />
               </span>
             </div>
             <div className="relative">
