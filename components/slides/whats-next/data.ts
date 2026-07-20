@@ -1,7 +1,7 @@
 import { Cloud, Database, LayoutTemplate } from "lucide-react";
 import type { PillarCard, PillarStatus } from "./types";
 
-export const slideNumber = "10";
+export const slideNumber = "11";
 export const slideTitle = "What's Next";
 export const slideSubtitle = "Action-Oriented";
 
@@ -18,4 +18,4 @@ export const statusLabel: Record<PillarStatus, string> = {
   development: "IN DEVELOPMENT",
 };
 
-export const readyBannerText = "Ready for Execution: Standing by for Board Authorization to Launch";
+export const readyBannerText = "We will proceed to the next steps and provide progress updates accordingly.";

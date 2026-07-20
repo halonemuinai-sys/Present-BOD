@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import type { KpiColumnData } from "./types";
 
-export const slideNumber = "2";
+export const slideNumber = "3";
 export const slideTitle = "Performance Management Framework";
 export const slideSubtitle = "We measure what matters to achieve our ambition.";
 

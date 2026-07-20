@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import type { AmbitionBullet, FlowStep, FooterItem, GovernanceStep } from "./types";
 
-export const slideNumber = "1";
+export const slideNumber = "2";
 export const slideTitle = "MRA Group Growth Ambition";
 export const slideSubtitlePrefix = "Creating the strategic foundation to deliver";
 export const slideSubtitleHighlight = "Sustainable Revenue & Profit Growth.";

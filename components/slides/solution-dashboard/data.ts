@@ -21,7 +21,7 @@ import type {
   UnitBar,
 } from "./types";
 
-export const slideNumber = "4";
+export const slideNumber = "5";
 export const slideTitle = "The Solution: System of Record & Integrated Dashboard";
 export const slideSubtitle = "One data. One platform. One truth. Real time.";
 

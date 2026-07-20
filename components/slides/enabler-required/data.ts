@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2, Clock, Cloud, Database, MonitorCheck, Workflow } from "lucide-react";
 import type { EnablerCard, EnablerStatus } from "./types";
 
-export const slideNumber = "5";
+export const slideNumber = "6";
 export const slideTitle = "Enabler Required";
 export const slideSubtitlePrefix = "Through ";
 export const slideSubtitleBold = "Disciplined";

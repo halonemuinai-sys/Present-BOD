@@ -1,7 +1,7 @@
 import { BarChart3, Database, LineChart, Megaphone, Scale, Users } from "lucide-react";
 import type { FlowStageData, ListItem, SourceSystem } from "./types";
 
-export const slideNumber = "6";
+export const slideNumber = "7";
 export const slideLabel = "Proposed Solution";
 export const slideTitle = "Not a Duplicate Dashboard, But a Consolidation Layer";
 export const slideSubtitleLine1 = "Existing systems stay in place for day-to-day operations.";

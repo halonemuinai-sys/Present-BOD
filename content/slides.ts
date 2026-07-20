@@ -1,6 +1,7 @@
 import type { Slide } from "@/lib/types";
 // import EnterpriseEcosystemSlide from "@/components/slides/enterprise-ecosystem"; // hidden — re-add to slides[] below to restore
 import CoverHeroSlide from "@/components/slides/cover-hero";
+import ObjectiveSlide from "@/components/slides/objective";
 import GrowthStrategySlide from "@/components/slides/growth-strategy";
 import KpiFrameworkSlide from "@/components/slides/kpi-framework";
 import CurrentChallengesSlide from "@/components/slides/current-challenges";
@@ -23,6 +24,11 @@ export const slides: Slide[] = [
     type: "diagram",
     id: "cover",
     Component: CoverHeroSlide,
+  },
+  {
+    type: "diagram",
+    id: "objective",
+    Component: ObjectiveSlide,
   },
   {
     type: "diagram",

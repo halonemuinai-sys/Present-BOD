@@ -30,7 +30,7 @@ export default function DepartmentPainPointsSlide() {
           className="flex items-start gap-4"
         >
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#101b3d] text-2xl font-black text-white md:h-14 md:w-14 md:text-3xl">
-            7
+            8
           </span>
           <div>
             <div className="flex items-center gap-2">

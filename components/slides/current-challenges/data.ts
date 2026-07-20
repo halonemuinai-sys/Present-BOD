@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import type { ImpactItem, KeyQuestion, SystemCardData } from "./types";
 
-export const slideNumber = "3";
+export const slideNumber = "4";
 export const slideTitle = "Current Challenges";
 export const slideSubtitle = "Our challenge is not the lack of strategy, but the lack of integrated system.";
 

@@ -25,7 +25,7 @@ export default function RoadmapTimelineSlide() {
         {/* Header and Tab switcher aligned horizontally */}
         <div className="mb-4 flex items-start gap-4">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#101b3d] text-2xl font-black text-white md:h-14 md:w-14 md:text-3xl">
-            9
+            10
           </span>
           <div className="flex flex-1 flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
