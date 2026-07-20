@@ -26,7 +26,20 @@ export default function ComparisonColumn({ data }: { data: ComparisonColumnData 
 
   return (
     <div className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-      <p className="text-xs font-black uppercase tracking-wide text-[#101b3d] md:text-sm">{data.label}</p>
+      <motion.span
+        animate={{
+          scale: [1, 1.08, 1],
+          boxShadow: [
+            "0 0 0 0 rgba(217, 154, 43, 0.5)",
+            "0 0 0 6px rgba(217, 154, 43, 0)",
+            "0 0 0 0 rgba(217, 154, 43, 0.5)",
+          ],
+        }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="inline-block w-fit rounded-full bg-[#101b3d] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wide text-white md:text-xs"
+      >
+        {data.label}
+      </motion.span>
       <h2 className="mt-1 text-2xl font-bold text-[#101b3d] md:text-3xl">{data.title}</h2>
       <p className="mt-1 text-sm italic text-slate-500">{data.subtitle}</p>
 
