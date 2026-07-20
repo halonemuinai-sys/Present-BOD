@@ -48,4 +48,4 @@ export const supportFunction = {
 };
 
 export const summaryParts = ["Right KPI", "Accurate Data", "Real Time Monitoring"];
-export const summaryResult = "Better Decision & Aggressive Growth";
+export const summaryResult = "Better Decision & Sustainable Growth";

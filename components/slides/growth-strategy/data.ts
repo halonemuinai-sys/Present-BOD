@@ -16,10 +16,10 @@ import type { AmbitionBullet, FlowStep, FooterItem, GovernanceStep } from "./typ
 export const slideNumber = "1";
 export const slideTitle = "MRA Group Growth Ambition";
 export const slideSubtitlePrefix = "Creating the strategic foundation to deliver";
-export const slideSubtitleHighlight = "Aggressive Revenue & Profit Growth.";
+export const slideSubtitleHighlight = "Sustainable Revenue & Profit Growth.";
 
 export const ambitionLabel = "Our Ambition";
-export const ambitionTitle = ["Aggressive", "Revenue &", "Profit Growth"];
+export const ambitionTitle = ["Sustainable", "Revenue &", "Profit Growth"];
 export const ambitionTagline = "Accelerate today. Sustain tomorrow.";
 
 export const ambitionBullets: AmbitionBullet[] = [

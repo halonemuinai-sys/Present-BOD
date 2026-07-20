@@ -9,7 +9,7 @@ export const slideSubtitleSuffix = " Execution and Data-Driven Decision Making";
 
 export const quoteLine1 = "MRA Group's Ambition is Clear:";
 export const quotePrefix = "To Achieve ";
-export const quoteHighlight1 = "Aggressive Revenue";
+export const quoteHighlight1 = "Sustainable Revenue";
 export const quoteMid = " & ";
 export const quoteHighlight2 = "Profit Growth";
 
