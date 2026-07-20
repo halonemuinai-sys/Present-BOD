@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bi-Weekly Progress Update",
+  title: "MRA Integrated Performance Platform",
   description: "Presentasi progres proyek dua mingguan.",
 };
 

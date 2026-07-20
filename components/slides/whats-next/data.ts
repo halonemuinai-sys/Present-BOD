@@ -1,7 +1,7 @@
 import { Cloud, Database, LayoutTemplate } from "lucide-react";
 import type { PillarCard, PillarStatus } from "./types";
 
-export const slideNumber = "12";
+export const slideNumber = "10";
 export const slideTitle = "What's Next";
 export const slideSubtitlePrefix = "Through ";
 export const slideSubtitleBold = "Disciplined";
@@ -22,4 +22,5 @@ export const statusLabel: Record<PillarStatus, string> = {
 };
 
 export const decisionLabel = "Decision Required";
-export const decisionText = "Approval of: KPI Framework, IT & MRA MU Project";
+export const decisionIntro = "Approval needed for:";
+export const approvalItems = ["KPI Framework", "IT", "MRA MU Project"];

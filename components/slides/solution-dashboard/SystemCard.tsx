@@ -10,10 +10,15 @@ export default function SystemCard({ data }: { data: SystemCardData }) {
   return (
     <motion.div
       variants={row}
-      whileHover={{ y: -2 }}
-      className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2 shadow-sm"
+      whileHover={{
+        y: -3,
+        scale: 1.02,
+        boxShadow: "0 10px 20px -6px rgba(0, 0, 0, 0.1)",
+        borderColor: "#94a3b8",
+      }}
+      className="group flex cursor-pointer items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-3 py-2 shadow-sm transition-colors duration-200"
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#101b3d] text-white">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#101b3d] text-white transition-transform duration-200 group-hover:scale-110">
         <data.icon size={15} />
       </span>
       <div>

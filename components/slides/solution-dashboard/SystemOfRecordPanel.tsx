@@ -47,22 +47,41 @@ export default function SystemOfRecordPanel() {
               viewport={{ once: true }}
               transition={{ delay: 0.15 + i * 0.05 }}
             >
-              <ArrowRight size={16} className="text-slate-300" />
+              <motion.div
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }}
+              >
+                <ArrowRight size={16} className="text-slate-300" />
+              </motion.div>
             </motion.div>
           ))}
         </div>
 
         <motion.div variants={hub} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col items-center gap-2 text-center">
-          <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-2 border-slate-200 bg-[#101b3d]">
+          <motion.div
+            animate={{
+              boxShadow: [
+                "0 0 0 0 rgba(217, 154, 43, 0.4)",
+                "0 0 0 10px rgba(217, 154, 43, 0)",
+                "0 0 0 0 rgba(217, 154, 43, 0.4)",
+              ],
+            }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="relative flex h-20 w-20 items-center justify-center rounded-full border-2 border-slate-200 bg-[#101b3d]"
+          >
             <div className="text-white/90">
               <svg width="30" height="24" viewBox="0 0 24 20" fill="currentColor">
                 <path d="M18 8.5c-.3-2.7-2.6-4.8-5.4-4.8-2.1 0-3.9 1.2-4.8 3-2.4.1-4.3 2.1-4.3 4.5 0 2.5 2 4.5 4.5 4.5h9.5c2.1 0 3.8-1.7 3.8-3.8 0-1.9-1.4-3.4-3.3-3.7z" />
               </svg>
             </div>
-            <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-[#d99a2b] ring-2 ring-white">
+            <motion.span
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-[#d99a2b] ring-2 ring-white"
+            >
               <RefreshCw size={13} className="text-white" />
-            </span>
-          </div>
+            </motion.span>
+          </motion.div>
           <p className="max-w-[7.5rem] text-[10px] font-black uppercase leading-tight text-[#101b3d]">{hubLabel}</p>
           <div className="text-[10px] font-semibold leading-snug text-slate-500">
             {hubPoints.map((p) => (

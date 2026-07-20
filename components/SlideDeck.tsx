@@ -160,7 +160,7 @@ export default function SlideDeck() {
               aria-label="Jump to slide"
               aria-expanded={pickerOpen}
             >
-              {currentIndex + 1} / {slides.length}
+              {currentIndex === 0 ? "Cover" : `${currentIndex} / ${slides.length - 1}`}
               <ChevronUp
                 size={12}
                 className={`transition-transform ${pickerOpen ? "" : "rotate-180"}`}
@@ -199,7 +199,7 @@ export default function SlideDeck() {
                             i === currentIndex ? "text-white/80" : "text-[var(--text-muted)]"
                           }`}
                         >
-                          {String(i + 1).padStart(2, "0")}
+                          {i === 0 ? "—" : String(i).padStart(2, "0")}
                         </span>
                         <span className="truncate">{formatSlideLabel(s.id)}</span>
                       </button>

@@ -1,10 +1,7 @@
-export type SystemBoxData = { title: string };
+import type { LucideIcon } from "lucide-react";
 
-export type ComparisonColumn = {
-  label: string;
-  title: string;
-  subtitle: string;
-  accent: "amber" | "green";
-  steps: string[];
-  bullets: string[];
-};
+export type SourceSystem = { icon: LucideIcon; label: string; logoDomain?: string; color: string };
+
+export type FlowStageData = { icon: LucideIcon; title: string; subtitle: string };
+
+export type ListItem = string;
