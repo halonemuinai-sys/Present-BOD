@@ -1,3 +1,25 @@
+import type { LucideIcon } from "lucide-react";
+
+export type Timeline2026Status = "completed" | "validation" | "planned" | "golive";
+
+export type Timeline2026Segment = { label: string; weight: number };
+
+export type Timeline2026Track = {
+  number: number;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  status: Timeline2026Status;
+  startMonth: number;
+  span: number;
+  segments?: Timeline2026Segment[];
+  statusLabel: string;
+  statusSubLabel?: string;
+  modules?: string[];
+  modulesTotalLabel?: string;
+  detailStatus?: string;
+};
+
 export type BarVariant = "prep" | "build" | "milestone";
 
 export type Bar = {

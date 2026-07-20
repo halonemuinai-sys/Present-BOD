@@ -13,7 +13,7 @@ export type LineItem = {
   tools?: ToolLink[];
 };
 
-export type PanelTotal = { price: string; note: string };
+export type PanelTotal = { price: string; note: string; annual: string; annualNote: string };
 
 export type SummaryStat = { icon: LucideIcon; value: string; label: string };
 

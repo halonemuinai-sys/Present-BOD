@@ -7,6 +7,7 @@ import { inHouseData, agencyData } from "./data";
 import MonthHeader from "./MonthHeader";
 import TrackRow from "./TrackRow";
 import Legend from "./Legend";
+import Timeline2026 from "./Timeline2026";
 import type { Bar } from "./types";
 
 export default function RoadmapTimelineSlide() {
@@ -97,33 +98,37 @@ export default function RoadmapTimelineSlide() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
 
-            {/* Gantt Chart Container */}
-            <div className="relative rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
-              <MonthHeader months={data.months} cols={cols} />
+            {/* Timeline Container */}
+            {tab === "inHouse" ? (
+              <Timeline2026 />
+            ) : (
+              <div className="relative rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
+                <MonthHeader months={data.months} cols={cols} />
 
-              <div className="relative mt-2">
-                {/* Vertical grid lines */}
-                <div
-                  className="pointer-events-none absolute inset-y-0 left-[220px] right-0"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(to right, #f1f5f9 0, #f1f5f9 1px, transparent 1px, transparent ${monthPercentage}%)`,
-                  }}
-                />
-                
-                <div className="relative flex flex-col divide-y divide-slate-100">
-                  {data.tracks.map((track) => (
-                    <TrackRow
-                      key={track.title}
-                      track={track}
-                      cols={cols}
-                      onBarClick={setSelectedBar}
-                    />
-                  ))}
+                <div className="relative mt-2">
+                  {/* Vertical grid lines */}
+                  <div
+                    className="pointer-events-none absolute inset-y-0 left-[220px] right-0"
+                    style={{
+                      backgroundImage: `repeating-linear-gradient(to right, #f1f5f9 0, #f1f5f9 1px, transparent 1px, transparent ${monthPercentage}%)`,
+                    }}
+                  />
+
+                  <div className="relative flex flex-col divide-y divide-slate-100">
+                    {data.tracks.map((track) => (
+                      <TrackRow
+                        key={track.title}
+                        track={track}
+                        cols={cols}
+                        onBarClick={setSelectedBar}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <Legend legend={data.legend} />
-            </div>
+                <Legend legend={data.legend} />
+              </div>
+            )}
 
             {/* Extra OLAP deliverables & note section */}
             {tab === "agency" && (

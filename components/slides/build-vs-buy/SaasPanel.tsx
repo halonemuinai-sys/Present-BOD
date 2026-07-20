@@ -92,6 +92,9 @@ export default function SaasPanel() {
         <div className="text-right">
           <span className="block text-2xl font-extrabold text-amber-700">{saasPanel.total.price}</span>
           <span className="text-xs text-slate-400">{saasPanel.total.note}</span>
+          <span className="mt-1 block text-xs font-semibold text-slate-500">
+            {saasPanel.total.annual} <span className="font-normal text-slate-400">({saasPanel.total.annualNote})</span>
+          </span>
         </div>
       </div>
     </motion.div>

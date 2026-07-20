@@ -7,6 +7,7 @@ import {
   Folder,
   Globe,
   Package,
+  RefreshCw,
   ShieldCheck,
   TrendingDown,
   TrendingUp,
@@ -110,7 +111,12 @@ export const saasPanel = {
       ],
     },
   ] satisfies LineItem[],
-  total: { price: "± $2,053 /mo", note: "≈ Rp 34 million / month" } satisfies PanelTotal,
+  total: {
+    price: "± $2,053 /mo",
+    note: "≈ Rp 34 million / month",
+    annual: "± $24,636 /yr",
+    annualNote: "≈ Rp 408 million / year",
+  } satisfies PanelTotal,
 };
 
 export const platformPanel = {
@@ -156,7 +162,12 @@ export const platformPanel = {
     "No per-user fees — add users freely",
     "Full ownership of code & data, fully customizable",
   ],
-  total: { price: "$67 /mo · flat", note: "≈ Rp 1.1 million / month" } satisfies PanelTotal,
+  total: {
+    price: "$67 /mo · flat",
+    note: "≈ Rp 1.1 million / month",
+    annual: "$804 /yr · flat",
+    annualNote: "≈ Rp 13.2 million / year",
+  } satisfies PanelTotal,
 };
 
 export const summaryStats: SummaryStat[] = [
@@ -177,7 +188,7 @@ export const devMeta = {
   footnote: "Milestone payments available · All prices before PPN (11%)",
 };
 
-export type DevTabId = "overview" | "foundation" | "data" | "dashboards" | "qa";
+export type DevTabId = "overview" | "foundation" | "data" | "dashboards" | "qa" | "recurring";
 export type DevTab = { id: DevTabId; label: string; icon: LucideIcon };
 
 export const devTabs: DevTab[] = [
@@ -186,6 +197,7 @@ export const devTabs: DevTab[] = [
   { id: "data", label: "Data & ETL", icon: Database },
   { id: "dashboards", label: "Dashboards & AI", icon: LayoutDashboard },
   { id: "qa", label: "QA & Delivery", icon: ShieldCheck },
+  { id: "recurring", label: "Recurring Costs", icon: RefreshCw },
 ];
 
 export const grandFixedTotal = "Rp 257.500.000";

@@ -21,7 +21,6 @@ import {
   qaSections,
   recurringItems,
   recurringNotes,
-  roiAnalysis,
 } from "./data";
 import SaasPanel from "./SaasPanel";
 import PlatformPanel from "./PlatformPanel";
@@ -31,7 +30,7 @@ import type { DevTabId } from "./data";
 import type { PricingSection, GrandTotal } from "./types";
 
 export default function BuildVsBuySlide() {
-  const [tab, setTab] = useState<"market" | "development" | "roi">("market");
+  const [tab, setTab] = useState<"market" | "development">("market");
   const [devTab, setDevTab] = useState<DevTabId>("overview");
 
   return (
@@ -85,9 +84,6 @@ export default function BuildVsBuySlide() {
               {tab === "development" && (
                 <span className="text-slate-900">Project Development Scope &amp; Budget</span>
               )}
-              {tab === "roi" && (
-                <span className="text-slate-900">Return on Investment (ROI) &amp; Operational Costs</span>
-              )}
             </h1>
           </div>
           
@@ -111,16 +107,6 @@ export default function BuildVsBuySlide() {
               }`}
             >
               Dev Budget &amp; Scope
-            </button>
-            <button
-              onClick={() => setTab("roi")}
-              className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
-                tab === "roi"
-                  ? "bg-[#2c4a4e] text-white shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              ROI &amp; Recurring
             </button>
           </div>
           </div>
@@ -190,94 +176,11 @@ export default function BuildVsBuySlide() {
                       <PricingTable sections={dashboardSections} grandTotal={dashboardGrandTotal} />
                     )}
                     {devTab === "qa" && <PricingTable sections={qaSections} />}
+                    {devTab === "recurring" && <RecurringSubTab />}
                   </motion.div>
                 </AnimatePresence>
 
                 <p className="mt-5 text-center text-xs italic text-slate-400">{devMeta.footnote}</p>
-              </div>
-            )}
-
-            {/* Tab 3: ROI & Recurring Costs */}
-            {tab === "roi" && (
-              <div className="flex flex-col gap-6">
-                <p className="max-w-3xl text-sm text-slate-500 leading-relaxed">
-                  Calculation of return on investment (ROI), monthly savings comparison, and annualized operational cost breakdown for servers, maintenance, and the AI engine.
-                </p>
-
-                {/* ROI Headline Card */}
-                <div className="rounded-2xl bg-gradient-to-br from-[#1f3a3d] to-[#2c4a4e] p-6 text-white shadow-md">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="flex-1">
-                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#86efac] block mb-1">
-                        Return On Investment
-                      </span>
-                      <h4 className="text-xl font-extrabold">{roiAnalysis.headline}</h4>
-                      <p className="mt-2 text-xs text-slate-200 leading-relaxed max-w-xl">
-                        {roiAnalysis.description}
-                      </p>
-                    </div>
-                    <div className="rounded-2xl bg-emerald-500/10 border border-emerald-500/30 px-6 py-4 text-center shrink-0 min-w-[150px]">
-                      <span className="block text-3xl font-extrabold text-[#86efac]">{roiAnalysis.bepPeriod.split(" ")[0]}</span>
-                      <span className="text-xs uppercase tracking-widest text-[#86efac] font-bold">Months Payback</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Comparison Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <span className="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Monthly SaaS Cost (Buy)</span>
-                    <span className="text-lg font-extrabold text-slate-700">{roiAnalysis.monthlySaaS}</span>
-                  </div>
-                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm border-l-4 border-l-teal-600">
-                    <span className="block text-[10px] font-bold uppercase tracking-wide text-teal-600">Monthly Platform Cost (Build)</span>
-                    <span className="text-lg font-extrabold text-teal-700">{roiAnalysis.monthlyPlatform}</span>
-                  </div>
-                  <div className="rounded-xl border border-slate-200 bg-emerald-50 p-4 shadow-sm border-l-4 border-l-emerald-600">
-                    <span className="block text-[10px] font-bold uppercase tracking-wide text-emerald-800">Net Monthly Savings</span>
-                    <span className="text-lg font-extrabold text-emerald-800">+{roiAnalysis.monthlySavings}</span>
-                  </div>
-                </div>
-
-                {/* Recurring Table */}
-                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                  <div className="bg-[#1f3a3d] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
-                    Section B · Ongoing Recurring Costs (Annualized)
-                  </div>
-                  <div className="divide-y divide-slate-100">
-                    {recurringItems.map((item) => (
-                      <div key={item.code} className="px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 text-xs">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#1f3a3d]">{item.code}</span>
-                            <span className="font-bold text-slate-700">{item.title}</span>
-                          </div>
-                          <span className="block text-[10.5px] text-slate-400 mt-0.5">{item.detail}</span>
-                        </div>
-                        <div className="flex md:flex-col items-baseline md:items-end justify-between md:justify-center gap-2 shrink-0">
-                          <span className="font-extrabold text-slate-900 text-sm">{item.annual}</span>
-                          <span className="text-[10px] text-slate-400">({item.monthly})</span>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="flex items-center justify-between bg-slate-50 px-4 py-3">
-                      <span className="text-xs font-bold uppercase tracking-wide text-slate-500">
-                        Total Annual Recurring Costs
-                      </span>
-                      <span className="text-md font-extrabold text-[#1f3a3d]">{grandRecurringTotal}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Recurring Notes */}
-                <div className="rounded-xl border border-slate-200 bg-white p-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wide text-slate-400 block mb-2">Notes</span>
-                  <ul className="list-disc pl-4 space-y-1 text-xs text-slate-500">
-                    {recurringNotes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             )}
           </motion.div>
@@ -350,6 +253,53 @@ function OverviewSubTab() {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function RecurringSubTab() {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        <div className="bg-[#1f3a3d] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
+          Section B · Ongoing Recurring Costs (Annualized)
+        </div>
+        <div className="divide-y divide-slate-100">
+          {recurringItems.map((item) => (
+            <div
+              key={item.code}
+              className="flex flex-col gap-2 px-4 py-3 text-xs md:flex-row md:items-center md:justify-between"
+            >
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-[#1f3a3d]">{item.code}</span>
+                  <span className="font-bold text-slate-700">{item.title}</span>
+                </div>
+                <span className="mt-0.5 block text-[10.5px] text-slate-400">{item.detail}</span>
+              </div>
+              <div className="flex shrink-0 items-baseline justify-between gap-2 md:flex-col md:items-end md:justify-center">
+                <span className="text-sm font-extrabold text-slate-900">{item.annual}</span>
+                <span className="text-[10px] text-slate-400">({item.monthly})</span>
+              </div>
+            </div>
+          ))}
+          <div className="flex items-center justify-between bg-slate-50 px-4 py-3">
+            <span className="text-xs font-bold uppercase tracking-wide text-slate-500">
+              Total Annual Recurring Costs
+            </span>
+            <span className="text-md font-extrabold text-[#1f3a3d]">{grandRecurringTotal}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-slate-200 bg-white p-4">
+        <span className="mb-2 block text-[10px] font-bold uppercase tracking-wide text-slate-400">Notes</span>
+        <ul className="list-disc space-y-1 pl-4 text-xs text-slate-500">
+          {recurringNotes.map((note) => (
+            <li key={note}>{note}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
