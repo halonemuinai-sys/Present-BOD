@@ -35,16 +35,20 @@ export default function CoverHeroSlide() {
               className="h-20 w-auto object-contain md:h-24"
               priority
             />
-            <h1 className="mt-3 text-5xl font-black uppercase leading-[0.95] tracking-tight text-[#d99a2b] md:text-7xl">
-              Growth
-              <br />
-              Ambition
+            <h1 className="mt-3 text-4xl font-black uppercase leading-[0.95] tracking-tight md:text-6xl">
+              <span className="text-[#101b3d]">
+                MRA
+                <br />
+                Integrated
+                <br />
+              </span>
+              <span className="text-[#d99a2b]">Performance Platform</span>
             </h1>
             <div className="mt-5 h-1 w-16 bg-[#d99a2b]" />
             <p className="mt-5 text-base font-black uppercase leading-snug tracking-wide text-[#101b3d] md:text-lg">
-              Building the Foundation for
+              Building a Secure, Accountable,
               <br />
-              Revenue &amp; Profit Growth
+              and Consistent System
             </p>
           </motion.div>
 
