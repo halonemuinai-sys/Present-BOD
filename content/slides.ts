@@ -50,6 +50,11 @@ export const slides: Slide[] = [
   },
   {
     type: "diagram",
+    id: "consolidation-layer",
+    Component: ConsolidationLayerSlide,
+  },
+  {
+    type: "diagram",
     id: "big-data-pipeline",
     Component: BigDataPipelineSlide,
   },
@@ -67,12 +72,6 @@ export const slides: Slide[] = [
     type: "diagram",
     id: "build-vs-buy",
     Component: BuildVsBuySlide,
-  },
-
-  {
-    type: "diagram",
-    id: "consolidation-layer",
-    Component: ConsolidationLayerSlide,
   },
   {
     type: "diagram",

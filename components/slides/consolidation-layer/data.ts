@@ -1,6 +1,6 @@
 import type { ComparisonColumn, SystemBoxData } from "./types";
 
-export const slideNumber = "11";
+export const slideNumber = "6";
 export const slideLabel = "Proposed Solution";
 export const slideTitle = "Not a Duplicate Dashboard, But a Consolidation Layer";
 export const slideSubtitle =
