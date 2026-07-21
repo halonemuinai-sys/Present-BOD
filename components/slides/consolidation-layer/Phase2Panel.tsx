@@ -4,8 +4,6 @@ import {
   advantageLabel,
   advantages,
   architectureLabel,
-  phase2Acronym,
-  phase2AcronymExpansion,
   phase2Label,
   phase2Tagline,
   phase2Title,
@@ -35,9 +33,6 @@ export default function Phase2Panel() {
         </motion.span>
         <div>
           <h3 className="text-lg font-black text-[#101b3d] md:text-xl">{phase2Title}</h3>
-          <p className="text-sm font-black text-emerald-700">
-            {phase2Acronym} <span className="font-bold text-[#101b3d]">{phase2AcronymExpansion}</span>
-          </p>
         </div>
       </div>
       <p className="mt-2 text-xs italic text-slate-500">{phase2Tagline}</p>

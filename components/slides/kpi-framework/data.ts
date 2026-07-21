@@ -29,7 +29,7 @@ export const kpiColumns: KpiColumnData[] = [
     ],
   },
   {
-    label: "Profit (Cost) KPI",
+    label: "(Cost) KPI",
     color: "amber",
     items: [
       { icon: CircleDollarSign, title: "Cost Efficiency", text: "Optimize cost to drive higher productivity" },

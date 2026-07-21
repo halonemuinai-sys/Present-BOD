@@ -3,8 +3,6 @@ import { ChevronDown, Database, Monitor } from "lucide-react";
 import {
   limitationLabel,
   limitations,
-  phase1Acronym,
-  phase1AcronymExpansion,
   phase1Label,
   phase1OutputTitle,
   phase1Tagline,
@@ -36,9 +34,6 @@ export default function Phase1Panel() {
         </motion.span>
         <div>
           <h3 className="text-lg font-black text-[#101b3d] md:text-xl">{phase1Title}</h3>
-          <p className="text-sm font-black text-[#d99a2b]">
-            {phase1Acronym} <span className="font-bold text-[#101b3d]">{phase1AcronymExpansion}</span>
-          </p>
         </div>
       </div>
       <p className="mt-2 text-xs italic text-slate-500">{phase1Tagline}</p>

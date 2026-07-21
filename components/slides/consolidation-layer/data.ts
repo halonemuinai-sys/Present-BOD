@@ -14,8 +14,6 @@ export const flowBottom = "To Strategic Insight";
 // Phase 1 — System of Record
 export const phase1Label = "Phase 1";
 export const phase1Title = "System of Record";
-export const phase1Acronym = "OLTP";
-export const phase1AcronymExpansion = "(Online Transaction Processing)";
 export const phase1Tagline = "Per data source, for operational teams";
 
 export const sourceSystems: SourceSystem[] = [
@@ -39,8 +37,6 @@ export const limitations: ListItem[] = [
 // Phase 2 — System of Insight
 export const phase2Label = "Phase 2";
 export const phase2Title = "System of Insight";
-export const phase2Acronym = "OLAP";
-export const phase2AcronymExpansion = "(Online Analytical Processing)";
 export const phase2Tagline = "Consolidated across functions & BUs, for Board/C-Level";
 
 export const architectureLabel = "Data Flow Architecture";

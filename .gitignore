@@ -8,3 +8,9 @@ npm-debug.log*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+*.docx
+*.pdf
+generate_word_*.py
+generate_pdf_*.py
+
+

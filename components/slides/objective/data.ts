@@ -17,7 +17,7 @@ export const objectiveItems: ObjectiveItem[] = [
     number: 2,
     icon: Monitor,
     badgeIcon: PieChart,
-    title: "Budget for System of Record & Integrated Dashboard",
+    title: "Budget for System of Digitalization to Automation",
     description: "to support development of the system.",
   },
 ];
